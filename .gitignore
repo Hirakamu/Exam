@@ -8,7 +8,8 @@ venv
 *.env
 *.pyc
 __pycache__/
+.vscode/
 
 # user specfic data
-ujian/data/exam/safeexam
-ujian/data/exam/teacher
+ujian/data/exam/safeexam/*
+ujian/data/exam/teacher/*

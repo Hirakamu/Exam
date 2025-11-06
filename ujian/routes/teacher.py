@@ -374,7 +374,6 @@ def teacherSubjectGrade(subject, grade):
 
     return jsonify(data), 200
 
-
 @teacher_bp.route("/dashboard/<subject>/<grade>/<classe>")
 def teacherSubjectGradeClass(subject, grade, classe):
     """
@@ -422,7 +421,6 @@ def teacherSubjectGradeClass(subject, grade, classe):
         })
 
     return jsonify(data), 200
-
 
 @teacher_bp.route("/tokens", methods=["POST"]) # need authentication
 def teacherToken():
@@ -482,3 +480,20 @@ def teacherSessionCleanup():
             cur.execute("DELETE FROM sessions WHERE active = FALSE")
         deleted_count = cur.rowcount
         return jsonify({"force": force, "deleted": deleted_count}), 200
+
+@teacher_bp.route("/requestteacherjob", methods=["POST"])
+def requestTeacher():
+    req = request.get_json(force=True)
+    name = req.get("name")
+    
+    if not name:
+        return jsonify({"ok": False, "error": "missing name"}), 400
+    
+    with db_cursor() as (conn, cur):
+        cur.execute("SELECT 1 FROM teachers WHERE name = %s", (name,))
+        data = cur.fetchone()
+        if not data:
+            return jsonify({"ok": False, "message": "Guru tidak terdaftar."}), 404
+
+
+        

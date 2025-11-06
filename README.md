@@ -1,4 +1,4 @@
-# ujian (Hira Form System)
+# Sistem Ujian SMAN 2 Cikarang Pusat
 
 This folder contains a small Flask-based exam system (students, teachers, proctors) backed by PostgreSQL.
 
@@ -46,8 +46,3 @@ with db_cursor() as (conn, cur):
   - Add unit tests using pytest for core flows (token validation, session creation, answer submit).
   - Add migration tooling (Alembic) if you plan iterative schema changes.
   - Consolidate startup code in `hiraexam.py` to use `db.py` helpers only.
-
-If you want, I can now:
-- refactor `hiraexam.py` to use the new helpers and remove duplicate pool creation, or
-- update a few route handlers to use `db_cursor()` to reduce boilerplate, or
-- add a docker-compose and a basic test.

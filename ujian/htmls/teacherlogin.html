@@ -117,7 +117,7 @@
           localStorage.setItem('teacher-special-key', data['special-key']); // dash needs bracket notation
 
           const params = new URLSearchParams(window.location.search);
-          const redirect = params.get('redirect') || '/teacher/dashboard';
+          const redirect = params.get('redirect') || 'dashboard';
           setTimeout(() => window.location.href = redirect, 500);
         }
       } catch (err) {

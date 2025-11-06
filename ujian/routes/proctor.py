@@ -1,6 +1,5 @@
 from flask import Blueprint, request, jsonify, render_template
-import hashlib, uuid, json
-
+import hashlib, uuid
 
 url = '/' + hashlib.sha512(uuid.uuid4().hex.encode()).hexdigest()
 proctor_bp = Blueprint("proctor", __name__, url_prefix=url)

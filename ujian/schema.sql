@@ -9,7 +9,8 @@ CREATE TABLE students (
 
 CREATE TABLE teachers (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(100) NOT NULL
+    name VARCHAR(100) NOT NULL,
+    job jsonb NOT NULL
 );
 
 CREATE TABLE rooms (
