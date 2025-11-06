@@ -1,0 +1,1487 @@
+{
+  "grade": "X",
+  "classes": {
+    "E1": [
+      {
+        "nis": "252610001",
+        "name": "ABDUL BARID"
+      },
+      {
+        "nis": "252610002",
+        "name": "ADITYA ALFIAN"
+      },
+      {
+        "nis": "252610003",
+        "name": "AI NUR AISYAH"
+      },
+      {
+        "nis": "252610004",
+        "name": "AINA RAMADHANI ISMOYO"
+      },
+      {
+        "nis": "252610005",
+        "name": "AKBAR VANEZHA PUTRA"
+      },
+      {
+        "nis": "252610006",
+        "name": "ALVARIZHI BIMO PRASTYO"
+      },
+      {
+        "nis": "252610007",
+        "name": "AMARRAFASYA SALMAN P"
+      },
+      {
+        "nis": "252610008",
+        "name": "ARIF SETIAWAN"
+      },
+      {
+        "nis": "252610009",
+        "name": "AULIA SINTIA BELA"
+      },
+      {
+        "nis": "252610010",
+        "name": "AZIZA RIZKA ANTORO"
+      },
+      {
+        "nis": "252610011",
+        "name": "BYAN ANUGRAH SAEPUDIN"
+      },
+      {
+        "nis": "252610012",
+        "name": "CINTA ASMAUL HUSNA S."
+      },
+      {
+        "nis": "252610013",
+        "name": "CITRA AZZALEA KHOERUNISA"
+      },
+      {
+        "nis": "252610014",
+        "name": "DAFA SAPUTRA"
+      },
+      {
+        "nis": "252610015",
+        "name": "DEOFEDRIK SAMUEL LUBIS"
+      },
+      {
+        "nis": "252610016",
+        "name": "DWI RAMADHANI NUR AZIZAH"
+      },
+      {
+        "nis": "252610017",
+        "name": "EVA VIOLINA"
+      },
+      {
+        "nis": "252610018",
+        "name": "ILHAM SHAFARRAHMAN"
+      },
+      {
+        "nis": "252610019",
+        "name": "JESSICA OKTAVIANI CLEONIMA"
+      },
+      {
+        "nis": "252610020",
+        "name": "KARMILA SARI"
+      },
+      {
+        "nis": "252610021",
+        "name": "KAYLA IZZA NOVARIANTI"
+      },
+      {
+        "nis": "252610022",
+        "name": "M. ALGHIFARY FINDRANAYA"
+      },
+      {
+        "nis": "252610023",
+        "name": "M. FARID PRATAMA"
+      },
+      {
+        "nis": "252610024",
+        "name": "MA'MUN NAWAWI"
+      },
+      {
+        "nis": "252610025",
+        "name": "MUHAMMAD ALVIN WARDIANSYAH"
+      },
+      {
+        "nis": "252610026",
+        "name": "MUHAMMAD ARIFIN ILHAM"
+      },
+      {
+        "nis": "252610027",
+        "name": "MUHAMMAD FAHRI ROSIDIN"
+      },
+      {
+        "nis": "252610028",
+        "name": "MULDIYONO"
+      },
+      {
+        "nis": "252610029",
+        "name": "MUMTAZ MASAYA ALIFA DZUKHRUF"
+      },
+      {
+        "nis": "252610030",
+        "name": "NAGHITA ANANDA PUTRI"
+      },
+      {
+        "nis": "252610031",
+        "name": "NOVA WULANDARI SOENJOTO"
+      },
+      {
+        "nis": "252610032",
+        "name": "RISKI ADITIA"
+      },
+      {
+        "nis": "252610033",
+        "name": "SAFTIA AURILA BRIZI"
+      },
+      {
+        "nis": "252610034",
+        "name": "SANITA YULIANI SAFITRI"
+      },
+      {
+        "nis": "252610035",
+        "name": "SEPTANA AYU LESTARI"
+      },
+      {
+        "nis": "252610036",
+        "name": "SEPTIAN BENAYA L. NOYA"
+      },
+      {
+        "nis": "252610037",
+        "name": "SETYANI ILMIRA SUCI"
+      },
+      {
+        "nis": "252610038",
+        "name": "SITI HALIMA SAIDAH"
+      },
+      {
+        "nis": "252610039",
+        "name": "SRI RAHAYU"
+      },
+      {
+        "nis": "252610040",
+        "name": "SUCI RAMADANI"
+      },
+      {
+        "nis": "252610041",
+        "name": "SYAIPAH NURAINI"
+      },
+      {
+        "nis": "252610042",
+        "name": "TEGUH IBROHIM"
+      }
+    ],
+    "E2": [
+      {
+        "nis": "252610043",
+        "name": "AISYAH ALIFA"
+      },
+      {
+        "nis": "252610044",
+        "name": "AL DIMITRI FALAH SELLE"
+      },
+      {
+        "nis": "252610045",
+        "name": "ANDHIKA FIRMANSYAH"
+      },
+      {
+        "nis": "252610046",
+        "name": "ARYANHA AMALIA ACHMAD"
+      },
+      {
+        "nis": "252610047",
+        "name": "AUL DWI MAULANA"
+      },
+      {
+        "nis": "252610048",
+        "name": "BARA ALBARANI RAHARJA"
+      },
+      {
+        "nis": "252610049",
+        "name": "BLIZE HALA GHORANI"
+      },
+      {
+        "nis": "252610050",
+        "name": "DAVIAN STENLY PUTRA"
+      },
+      {
+        "nis": "252610051",
+        "name": "DEA NATASYA FITRIA"
+      },
+      {
+        "nis": "252610052",
+        "name": "DIMAS SUGIANA"
+      },
+      {
+        "nis": "252610053",
+        "name": "DINI SRI RAHAYU"
+      },
+      {
+        "nis": "252610054",
+        "name": "FADHILA OKTA SYFA AZZAHRA"
+      },
+      {
+        "nis": "252610055",
+        "name": "FAIZAL NADHIF SOBARI"
+      },
+      {
+        "nis": "252610057",
+        "name": "FEBI NUR'AENI"
+      },
+      {
+        "nis": "252610058",
+        "name": "FIKRI FAHLEVI"
+      },
+      {
+        "nis": "252610059",
+        "name": "HANA TRY YANTI"
+      },
+      {
+        "nis": "252610060",
+        "name": "ICHA VIETASELLYA"
+      },
+      {
+        "nis": "252610061",
+        "name": "ILHAM MUHAMAD RIZKY"
+      },
+      {
+        "nis": "252610062",
+        "name": "KHANSA KHOIRUNNISA HAFSHAH"
+      },
+      {
+        "nis": "252610063",
+        "name": "KHOLIQ ABDULLAH"
+      },
+      {
+        "nis": "252610064",
+        "name": "MELATI OKTAVIA"
+      },
+      {
+        "nis": "252610065",
+        "name": "MIFTAHUL REGINA PUTRI"
+      },
+      {
+        "nis": "252610066",
+        "name": "MUHAMAD ILHAM"
+      },
+      {
+        "nis": "252610067",
+        "name": "MUHAMAD NAZRIL AL BUKHORI"
+      },
+      {
+        "nis": "252610068",
+        "name": "MUHAMMAD AUFA GANDA"
+      },
+      {
+        "nis": "252610069",
+        "name": "MUHAMMAD FAKHRY HARU MAKKASAU"
+      },
+      {
+        "nis": "252610070",
+        "name": "NADYA AYU WANDIRA"
+      },
+      {
+        "nis": "252610071",
+        "name": "NURUL DEWI YANTI"
+      },
+      {
+        "nis": "252610072",
+        "name": "RADIT ADITYA PRATAMA"
+      },
+      {
+        "nis": "252610073",
+        "name": "RAFFA MAULANA HIDAYAT"
+      },
+      {
+        "nis": "252610074",
+        "name": "REJA PRATAMA"
+      },
+      {
+        "nis": "252610075",
+        "name": "RIRIN"
+      },
+      {
+        "nis": "252610076",
+        "name": "RITA PRATIWI"
+      },
+      {
+        "nis": "252610077",
+        "name": "RIYA AMELIA PUTRI"
+      },
+      {
+        "nis": "252610078",
+        "name": "SINDI AULIA"
+      },
+      {
+        "nis": "252610079",
+        "name": "SITI NURFADILAH"
+      },
+      {
+        "nis": "252610080",
+        "name": "TAMAN"
+      },
+      {
+        "nis": "252610081",
+        "name": "TANIA ANGGRAENI"
+      },
+      {
+        "nis": "252610082",
+        "name": "WINDA SARI"
+      }
+    ],
+    "E3": [
+      {
+        "nis": "252610083",
+        "name": "ADHE SYAKILA WATI"
+      },
+      {
+        "nis": "252610084",
+        "name": "AHMAD MAULANA"
+      },
+      {
+        "nis": "252610085",
+        "name": "AMELIA PUTRI"
+      },
+      {
+        "nis": "252610086",
+        "name": "ARSIH ISMATUL KARIMAH"
+      },
+      {
+        "nis": "252610087",
+        "name": "ASYIFA LUTFIANDINI"
+      },
+      {
+        "nis": "252610088",
+        "name": "AZZAM ZULFAHMI MAULANA"
+      },
+      {
+        "nis": "252610089",
+        "name": "BUNGA NAYLA SAFITRI"
+      },
+      {
+        "nis": "252610090",
+        "name": "CACA RAMADANI"
+      },
+      {
+        "nis": "252610091",
+        "name": "EKA BERLIAN SRI MUSTIKA SARI"
+      },
+      {
+        "nis": "252610092",
+        "name": "ENDANG"
+      },
+      {
+        "nis": "252610093",
+        "name": "FITRI"
+      },
+      {
+        "nis": "252610094",
+        "name": "FITRIANI"
+      },
+      {
+        "nis": "252610095",
+        "name": "HERDIANA SALWA SRI RAHAYU"
+      },
+      {
+        "nis": "252610096",
+        "name": "HILDA NURFADHILA"
+      },
+      {
+        "nis": "252610097",
+        "name": "IBNU ADAM ALJABAR"
+      },
+      {
+        "nis": "252610098",
+        "name": "ICHA MEYLINDA HASIBUAN"
+      },
+      {
+        "nis": "252610099",
+        "name": "IKSAN ABIMANYU"
+      },
+      {
+        "nis": "252610100",
+        "name": "ILHAM KHOIRULLOH PRASETYO"
+      },
+      {
+        "nis": "252610101",
+        "name": "INDAH NURMAIDAH"
+      },
+      {
+        "nis": "252610102",
+        "name": "JHON DAVIDSON CHRISTIANO FEOH"
+      },
+      {
+        "nis": "252610103",
+        "name": "KEIRA ZAHIRA PUTRI SANDRA"
+      },
+      {
+        "nis": "252610104",
+        "name": "KHORUNISA"
+      },
+      {
+        "nis": "252610105",
+        "name": "MARISA DESTIYANI"
+      },
+      {
+        "nis": "252610106",
+        "name": "MARTINUS LAMHOT FOREVER HUTAGALUNG"
+      },
+      {
+        "nis": "252610107",
+        "name": "MUHAMAD BADRI HUDAYA"
+      },
+      {
+        "nis": "252610108",
+        "name": "MUHAMAD ILHAM MUHDAIM"
+      },
+      {
+        "nis": "252610109",
+        "name": "MUHAMMAD MALIQ IQSHANNUDIN"
+      },
+      {
+        "nis": "252610110",
+        "name": "NABILAH"
+      },
+      {
+        "nis": "252610111",
+        "name": "NADIYA KORLITA"
+      },
+      {
+        "nis": "252610112",
+        "name": "PUTRI ARDIANSYAH"
+      },
+      {
+        "nis": "252610113",
+        "name": "RASTI MAHARANI"
+      },
+      {
+        "nis": "252610114",
+        "name": "RESTU SEPTIANA RAMADHANI"
+      },
+      {
+        "nis": "252610115",
+        "name": "REVAN RAFAEL"
+      },
+      {
+        "nis": "252610116",
+        "name": "RIFA FARHATUN NISSA"
+      },
+      {
+        "nis": "252610117",
+        "name": "RIZKIA MAULIDA SARI"
+      },
+      {
+        "nis": "252610118",
+        "name": "SALSABILA ARIVA NAURA"
+      },
+      {
+        "nis": "252610119",
+        "name": "SATRIA BINTANG"
+      },
+      {
+        "nis": "252610120",
+        "name": "SUFRON ROYADIANSYAH"
+      },
+      {
+        "nis": "252610121",
+        "name": "TIARA LARASATI SIMORANGKIR"
+      },
+      {
+        "nis": "252610122",
+        "name": "TIFFANY OKTAVIANI ZANETTI"
+      },
+      {
+        "nis": "252610123",
+        "name": "WULAN AGUSTINA MAHARDIKA"
+      },
+      {
+        "nis": "252610124",
+        "name": "ZAHRATUL SYIFA"
+      }
+    ],
+    "E4": [
+      {
+        "nis": "252610125",
+        "name": "AIRA DEFI SAPUTRI"
+      },
+      {
+        "nis": "252610126",
+        "name": "AMIR SYAHRIL RHAMADHAN"
+      },
+      {
+        "nis": "252610127",
+        "name": "AYUNINGTYAS ANINDITO WULANDARI"
+      },
+      {
+        "nis": "252610128",
+        "name": "DEDI PADILAH"
+      },
+      {
+        "nis": "252610129",
+        "name": "DIANA PUTRI"
+      },
+      {
+        "nis": "252610130",
+        "name": "DIANDRA BIMBI ALKHATIRI"
+      },
+      {
+        "nis": "252610131",
+        "name": "FAQIH ALGHIFARI"
+      },
+      {
+        "nis": "252610132",
+        "name": "FAREL ARKA SINATRIA"
+      },
+      {
+        "nis": "252610133",
+        "name": "FEBRIANTI SALSABILA"
+      },
+      {
+        "nis": "252610134",
+        "name": "GEISHA SAFA AMIRA"
+      },
+      {
+        "nis": "252610135",
+        "name": "HOIRUL UMAM"
+      },
+      {
+        "nis": "252610136",
+        "name": "HUSEN SAEFUL"
+      },
+      {
+        "nis": "252610137",
+        "name": "IMEL MELIANTI"
+      },
+      {
+        "nis": "252610138",
+        "name": "INDIRA PUTRI RAHMAWATI"
+      },
+      {
+        "nis": "252610139",
+        "name": "JAELANI"
+      },
+      {
+        "nis": "252610140",
+        "name": "JUNAEDI MUHAMAD ZAKARIA"
+      },
+      {
+        "nis": "252610141",
+        "name": "KARTINI MAHA DEWI"
+      },
+      {
+        "nis": "252610142",
+        "name": "KAYLA DZAKIYAH HASANAH"
+      },
+      {
+        "nis": "252610143",
+        "name": "KEYFA ATHAYA KHAIRINNISA"
+      },
+      {
+        "nis": "252610144",
+        "name": "KEYSAR AGUSTINO SIHOMBING"
+      },
+      {
+        "nis": "252610145",
+        "name": "LEANDRO MAHIJA ENDRA PUTRA"
+      },
+      {
+        "nis": "252610146",
+        "name": "LUKI AKBAR PERDANA"
+      },
+      {
+        "nis": "252610147",
+        "name": "M. RASYA TANKE TIMBU"
+      },
+      {
+        "nis": "252610148",
+        "name": "MALIKA ZAYNA WILDA SANI"
+      },
+      {
+        "nis": "252610149",
+        "name": "MAYA SARI"
+      },
+      {
+        "nis": "252610150",
+        "name": "MEIDA ROSALINA"
+      },
+      {
+        "nis": "252610151",
+        "name": "MICHAEL JOHN NATHAN SAMOSIR"
+      },
+      {
+        "nis": "252610152",
+        "name": "MUHAMAD LUCKY FIRMANSYAH"
+      },
+      {
+        "nis": "252610153",
+        "name": "NADIA AZHARANI"
+      },
+      {
+        "nis": "252610154",
+        "name": "NANDA RAHMADHANI SALSABILA"
+      },
+      {
+        "nis": "252610155",
+        "name": "NOVI FEBRIANA"
+      },
+      {
+        "nis": "252610156",
+        "name": "PUTRI RATNA SARI"
+      },
+      {
+        "nis": "252610157",
+        "name": "RAHMAT YASINNATIANSYAH"
+      },
+      {
+        "nis": "252610158",
+        "name": "RESTA DAVA OKTAFIA"
+      },
+      {
+        "nis": "252610159",
+        "name": "RIZKI YUSUP RIPAI"
+      },
+      {
+        "nis": "252610160",
+        "name": "RIZKY ADITYA NUGRAHA"
+      },
+      {
+        "nis": "252610161",
+        "name": "SAHARA NAYLA ZULFAH"
+      },
+      {
+        "nis": "252610162",
+        "name": "SHARFINA PUTRI CAHYA RAMADHANI"
+      },
+      {
+        "nis": "252610163",
+        "name": "SITI MAESAROH"
+      },
+      {
+        "nis": "252610164",
+        "name": "SITI NURJAHIRA ANDRIANSYAH"
+      },
+      {
+        "nis": "252610165",
+        "name": "SITI SALBIYAH"
+      }
+    ],
+    "E5": [
+      {
+        "nis": "252610125",
+        "name": "AIRA DEFI SAPUTRI"
+      },
+      {
+        "nis": "252610126",
+        "name": "AMIR SYAHRIL RHAMADHAN"
+      },
+      {
+        "nis": "252610127",
+        "name": "AYUNINGTYAS ANINDITO WULANDARI"
+      },
+      {
+        "nis": "252610128",
+        "name": "DEDI PADILAH"
+      },
+      {
+        "nis": "252610129",
+        "name": "DIANA PUTRI"
+      },
+      {
+        "nis": "252610130",
+        "name": "DIANDRA BIMBI ALKHATIRI"
+      },
+      {
+        "nis": "252610131",
+        "name": "FAQIH ALGHIFARI"
+      },
+      {
+        "nis": "252610132",
+        "name": "FAREL ARKA SINATRIA"
+      },
+      {
+        "nis": "252610133",
+        "name": "FEBRIANTI SALSABILA"
+      },
+      {
+        "nis": "252610134",
+        "name": "GEISHA SAFA AMIRA"
+      },
+      {
+        "nis": "252610135",
+        "name": "HOIRUL UMAM"
+      },
+      {
+        "nis": "252610136",
+        "name": "HUSEN SAEFUL"
+      },
+      {
+        "nis": "252610137",
+        "name": "IMEL MELIANTI"
+      },
+      {
+        "nis": "252610138",
+        "name": "INDIRA PUTRI RAHMAWATI"
+      },
+      {
+        "nis": "252610139",
+        "name": "JAELANI"
+      },
+      {
+        "nis": "252610140",
+        "name": "JUNAEDI MUHAMAD ZAKARIA"
+      },
+      {
+        "nis": "252610141",
+        "name": "KARTINI MAHA DEWI"
+      },
+      {
+        "nis": "252610142",
+        "name": "KAYLA DZAKIYAH HASANAH"
+      },
+      {
+        "nis": "252610143",
+        "name": "KEYFA ATHAYA KHAIRINNISA"
+      },
+      {
+        "nis": "252610144",
+        "name": "KEYSAR AGUSTINO SIHOMBING"
+      },
+      {
+        "nis": "252610145",
+        "name": "LEANDRO MAHIJA ENDRA PUTRA"
+      },
+      {
+        "nis": "252610146",
+        "name": "LUKI AKBAR PERDANA"
+      },
+      {
+        "nis": "252610147",
+        "name": "M. RASYA TANKE TIMBU"
+      },
+      {
+        "nis": "252610148",
+        "name": "MALIKA ZAYNA WILDA SANI"
+      },
+      {
+        "nis": "252610149",
+        "name": "MAYA SARI"
+      },
+      {
+        "nis": "252610150",
+        "name": "MEIDA ROSALINA"
+      },
+      {
+        "nis": "252610151",
+        "name": "MICHAEL JOHN NATHAN SAMOSIR"
+      },
+      {
+        "nis": "252610152",
+        "name": "MUHAMAD LUCKY FIRMANSYAH"
+      },
+      {
+        "nis": "252610153",
+        "name": "NADIA AZHARANI"
+      },
+      {
+        "nis": "252610154",
+        "name": "NANDA RAHMADHANI SALSABILA"
+      },
+      {
+        "nis": "252610155",
+        "name": "NOVI FEBRIANA"
+      },
+      {
+        "nis": "252610156",
+        "name": "PUTRI RATNA SARI"
+      },
+      {
+        "nis": "252610157",
+        "name": "RAHMAT YASINNATIANSYAH"
+      },
+      {
+        "nis": "252610158",
+        "name": "RESTA DAVA OKTAFIA"
+      },
+      {
+        "nis": "252610159",
+        "name": "RIZKI YUSUP RIPAI"
+      },
+      {
+        "nis": "252610160",
+        "name": "RIZKY ADITYA NUGRAHA"
+      },
+      {
+        "nis": "252610161",
+        "name": "SAHARA NAYLA ZULFAH"
+      },
+      {
+        "nis": "252610162",
+        "name": "SHARFINA PUTRI CAHYA RAMADHANI"
+      },
+      {
+        "nis": "252610163",
+        "name": "SITI MAESAROH"
+      },
+      {
+        "nis": "252610164",
+        "name": "SITI NURJAHIRA ANDRIANSYAH"
+      },
+      {
+        "nis": "252610165",
+        "name": "SITI SALBIYAH"
+      }
+    ],
+    "E6": [
+      {
+        "nis": "252610207",
+        "name": "ABDURROHMAN HUSAIN"
+      },
+      {
+        "nis": "252610208",
+        "name": "ADJIE YUDHISTIRA"
+      },
+      {
+        "nis": "252610209",
+        "name": "ANDRI RAMDANI"
+      },
+      {
+        "nis": "252610210",
+        "name": "ANGEL PRATIWI APRILIA"
+      },
+      {
+        "nis": "252610211",
+        "name": "ARRIDHO HIDAYAT"
+      },
+      {
+        "nis": "252610212",
+        "name": "AZWAR AKBAR SEPTIAN"
+      },
+      {
+        "nis": "252610213",
+        "name": "AZZAHRA ATHARIYAH"
+      },
+      {
+        "nis": "252610214",
+        "name": "BULDAN SYAKIR AL-MAKKI"
+      },
+      {
+        "nis": "252610215",
+        "name": "DAHLIA RASYAH PUTRI"
+      },
+      {
+        "nis": "252610216",
+        "name": "DAVA PUTRA AIRA"
+      },
+      {
+        "nis": "252610217",
+        "name": "DESAK KETUT NINDYA RENATA DEWI"
+      },
+      {
+        "nis": "252610218",
+        "name": "ELI"
+      },
+      {
+        "nis": "252610219",
+        "name": "ERNINO JAMALUDIN AKBAR"
+      },
+      {
+        "nis": "252610220",
+        "name": "FAHRAMITA ADELIANSYAH"
+      },
+      {
+        "nis": "252610221",
+        "name": "FAJRA AUDIKA ALBAMBI SUNARTO"
+      },
+      {
+        "nis": "252610222",
+        "name": "IMAM MAULANA RIFQY DHARMAWAN"
+      },
+      {
+        "nis": "252610223",
+        "name": "JACINDA WISTARA RAFIFAH"
+      },
+      {
+        "nis": "252610224",
+        "name": "JILLIAN LINTANG PERMATA HATI"
+      },
+      {
+        "nis": "252610225",
+        "name": "KESYA NURMALA SARI"
+      },
+      {
+        "nis": "252610226",
+        "name": "KEYZIA KAEMITA GUNAWAN"
+      },
+      {
+        "nis": "252610227",
+        "name": "MARNI YULYANAH"
+      },
+      {
+        "nis": "252610228",
+        "name": "MUHAMMAD ILYASH"
+      },
+      {
+        "nis": "252610229",
+        "name": "NAAIFAH KHAIRAH KHAALIIDIYAH"
+      },
+      {
+        "nis": "252610230",
+        "name": "NAFIIZAH ISHMAYLA"
+      },
+      {
+        "nis": "252610231",
+        "name": "OLIVIA SHAFFARANI SYAKUURA"
+      },
+      {
+        "nis": "252610232",
+        "name": "PUTRI ANANTASYA"
+      },
+      {
+        "nis": "252610233",
+        "name": "RESTU DWI MASSAID"
+      },
+      {
+        "nis": "252610234",
+        "name": "REVAN ANBIYA PEDROSA"
+      },
+      {
+        "nis": "252610235",
+        "name": "RIDHO ALQIANSYAH"
+      },
+      {
+        "nis": "252610236",
+        "name": "RIFKI ARDIANSYAH"
+      },
+      {
+        "nis": "252610237",
+        "name": "ROBI"
+      },
+      {
+        "nis": "252610238",
+        "name": "ROHAENI"
+      },
+      {
+        "nis": "252610239",
+        "name": "RYU KATHERINE JUNIAR"
+      },
+      {
+        "nis": "252610240",
+        "name": "SABIL AFIQ ZAUHAR"
+      },
+      {
+        "nis": "252610241",
+        "name": "SARTIKAH RESA"
+      },
+      {
+        "nis": "252610242",
+        "name": "SITI NAIPA NATATIA"
+      },
+      {
+        "nis": "252610243",
+        "name": "SRI PUTRI ANGGRAENI"
+      },
+      {
+        "nis": "252610244",
+        "name": "TIARA RAHMA AULIANI"
+      },
+      {
+        "nis": "252610245",
+        "name": "VANNYA"
+      },
+      {
+        "nis": "252610246",
+        "name": "WIRA MUKTI WIBOWO"
+      },
+      {
+        "nis": "252610247",
+        "name": "YURIDA NUR AFIYYAH"
+      }
+    ],
+    "E7": [
+      {
+        "nis": "252610248",
+        "name": "ABDUL ROHMAN"
+      },
+      {
+        "nis": "252610249",
+        "name": "AILZA QUEEN SILVIA FIRDAUS"
+      },
+      {
+        "nis": "252610250",
+        "name": "AKHDAN MUMTAZ SYAWAL"
+      },
+      {
+        "nis": "252610251",
+        "name": "AMELIA"
+      },
+      {
+        "nis": "252610252",
+        "name": "ANANDIA RAISHA ARINIE"
+      },
+      {
+        "nis": "252610253",
+        "name": "ANDIN ARSILA"
+      },
+      {
+        "nis": "252610254",
+        "name": "ANISA PUTRI RAMADHANI"
+      },
+      {
+        "nis": "252610255",
+        "name": "ARJUNA ATTHABARANI AUFA HANDRIYAS"
+      },
+      {
+        "nis": "252610256",
+        "name": "ARLINDYA PUTRI"
+      },
+      {
+        "nis": "252610257",
+        "name": "AULIA FIRMANSYAH CHANIAGO"
+      },
+      {
+        "nis": "252610258",
+        "name": "BARY ARIZKI BIMANTORO"
+      },
+      {
+        "nis": "252610259",
+        "name": "BELLICIA PUTRI KAURI"
+      },
+      {
+        "nis": "252610260",
+        "name": "EKA ANANTA"
+      },
+      {
+        "nis": "252610261",
+        "name": "ELLAWATI"
+      },
+      {
+        "nis": "252610262",
+        "name": "FA'IS MUHAMAD AZHAR"
+      },
+      {
+        "nis": "252610263",
+        "name": "FAHMI RAMADHAN"
+      },
+      {
+        "nis": "252610264",
+        "name": "HASANUDIN"
+      },
+      {
+        "nis": "252610265",
+        "name": "IJAH HODIJAH"
+      },
+      {
+        "nis": "252610266",
+        "name": "ILHAM AMSORI FAHRUROZI"
+      },
+      {
+        "nis": "252610267",
+        "name": "KARTIKA"
+      },
+      {
+        "nis": "252610268",
+        "name": "MARPIN"
+      },
+      {
+        "nis": "252610269",
+        "name": "MUFIDA NADIA AYESA"
+      },
+      {
+        "nis": "252610270",
+        "name": "MUHAMAD RAFA FIRMANSYAH"
+      },
+      {
+        "nis": "252610271",
+        "name": "MUHAMMAD IKHSAN FADILLAH"
+      },
+      {
+        "nis": "252610272",
+        "name": "MUHAMMAD REYHAN"
+      },
+      {
+        "nis": "252610273",
+        "name": "MUTIARA CANDY"
+      },
+      {
+        "nis": "252610274",
+        "name": "NABILA ARDHANA PRIYADI"
+      },
+      {
+        "nis": "252610275",
+        "name": "NAYSILA AULIA PUTRI"
+      },
+      {
+        "nis": "252610276",
+        "name": "NOVALIZA KHALILAH PUTRI"
+      },
+      {
+        "nis": "252610277",
+        "name": "NOVIYANTI"
+      },
+      {
+        "nis": "252610278",
+        "name": "NURHALIMAH"
+      },
+      {
+        "nis": "252610279",
+        "name": "OOM ROHMAH"
+      },
+      {
+        "nis": "252610280",
+        "name": "REVA AURA HAFIZHAH SHABRINA"
+      },
+      {
+        "nis": "252610281",
+        "name": "SAMSUDIN"
+      },
+      {
+        "nis": "252610282",
+        "name": "SANAH PITRIANI"
+      },
+      {
+        "nis": "252610283",
+        "name": "SASKIA WARDANI"
+      },
+      {
+        "nis": "252610284",
+        "name": "SILVIA NURALIKA"
+      },
+      {
+        "nis": "252610285",
+        "name": "SITI AIRA"
+      },
+      {
+        "nis": "252610286",
+        "name": "SOFI KAMILAH"
+      },
+      {
+        "nis": "252610287",
+        "name": "TRI ATMAJA"
+      },
+      {
+        "nis": "252610288",
+        "name": "USMAN JAELANI"
+      }
+    ],
+    "E8": [
+      {
+        "nis": "252610289",
+        "name": "AGNES TAMORA BR HASIBUAN"
+      },
+      {
+        "nis": "252610290",
+        "name": "AISHA CALLYSTA ADELIA"
+      },
+      {
+        "nis": "252610291",
+        "name": "AJAM JAMALUDIN"
+      },
+      {
+        "nis": "252610292",
+        "name": "ALDI HERMAYADI"
+      },
+      {
+        "nis": "252610293",
+        "name": "ALMIRA SHIFA ZAHRANI"
+      },
+      {
+        "nis": "252610294",
+        "name": "ALZAM ROSHANDIKA RAMADHAN"
+      },
+      {
+        "nis": "252610295",
+        "name": "ANDIN AULIA"
+      },
+      {
+        "nis": "252610296",
+        "name": "ARDIANSYAH PUTRA"
+      },
+      {
+        "nis": "252610297",
+        "name": "CHIKA AMELIA"
+      },
+      {
+        "nis": "252610298",
+        "name": "CITRA JUNITA SILABAN"
+      },
+      {
+        "nis": "252610299",
+        "name": "DEDE HAYKAL"
+      },
+      {
+        "nis": "252610300",
+        "name": "DHIYA' FADHILA RIDZQULLOH"
+      },
+      {
+        "nis": "252610301",
+        "name": "DINA AULIA"
+      },
+      {
+        "nis": "252610302",
+        "name": "FATIH ABYAN SOLIHIN"
+      },
+      {
+        "nis": "252610303",
+        "name": "HAMZAH AL MUGHNI"
+      },
+      {
+        "nis": "252610304",
+        "name": "HERNANDES KEANURIFA"
+      },
+      {
+        "nis": "252610305",
+        "name": "INDAH OCTAVIANI"
+      },
+      {
+        "nis": "252610306",
+        "name": "JANUAR ADITYA"
+      },
+      {
+        "nis": "252610307",
+        "name": "JASMINE VANEZZA EZHAR"
+      },
+      {
+        "nis": "252610308",
+        "name": "JEJEN PRATAMA"
+      },
+      {
+        "nis": "252610309",
+        "name": "KEYZHA SEPTY SAPUTRO"
+      },
+      {
+        "nis": "252610310",
+        "name": "MANDALA PUTRA ZACHARY"
+      },
+      {
+        "nis": "252610311",
+        "name": "MARLINA ALYA PUTRI"
+      },
+      {
+        "nis": "252610312",
+        "name": "MEISYA PUTRI NABIA"
+      },
+      {
+        "nis": "252610313",
+        "name": "MISCA RAHAYU"
+      },
+      {
+        "nis": "252610314",
+        "name": "MUHAMMAD SULTAN AULIA"
+      },
+      {
+        "nis": "252610315",
+        "name": "NAUFAL ROYYAN PREANGER"
+      },
+      {
+        "nis": "252610316",
+        "name": "NIKITA DJASMINE"
+      },
+      {
+        "nis": "252610317",
+        "name": "PUPUT PUTRIA ACIH"
+      },
+      {
+        "nis": "252610318",
+        "name": "PUTRI NURSELVIANI"
+      },
+      {
+        "nis": "252610319",
+        "name": "RAFFLYANSAH PANDU SANTOSO"
+      },
+      {
+        "nis": "252610320",
+        "name": "RASUM ALPIANA HERDIANSAH"
+      },
+      {
+        "nis": "252610321",
+        "name": "ROSITA APRILIA"
+      },
+      {
+        "nis": "252610322",
+        "name": "SANDRA DIENOST"
+      },
+      {
+        "nis": "252610323",
+        "name": "SARTIKA ASIH"
+      },
+      {
+        "nis": "252610324",
+        "name": "SITI SARAH"
+      },
+      {
+        "nis": "252610325",
+        "name": "SRI ANJANI"
+      },
+      {
+        "nis": "252610326",
+        "name": "SULTAN HASANUDIN"
+      },
+      {
+        "nis": "252610327",
+        "name": "SYIFA SAFA'ATUL HAMIDAH"
+      },
+      {
+        "nis": "252610328",
+        "name": "TIARA SYAHIRA"
+      },
+      {
+        "nis": "252610329",
+        "name": "TINTA ASIFA"
+      },
+      {
+        "nis": "252610330",
+        "name": "VANESSA ULLY NATHALY SIMANJUNTAK"
+      }
+    ],
+    "E9": [
+      {
+        "nis": "252610331",
+        "name": "AJENG DWI UTARI"
+      },
+      {
+        "nis": "252610332",
+        "name": "BUNGA INTAN PANJAITAN"
+      },
+      {
+        "nis": "252610333",
+        "name": "DHEA KHUSNUL SHAFARINA"
+      },
+      {
+        "nis": "252610334",
+        "name": "DIKI SANTOSO"
+      },
+      {
+        "nis": "252610335",
+        "name": "DINA ERNAWATI"
+      },
+      {
+        "nis": "252610336",
+        "name": "EKA SETIAWAN"
+      },
+      {
+        "nis": "252610337",
+        "name": "EVAN MARDIANSAH"
+      },
+      {
+        "nis": "252610338",
+        "name": "EVELIN FRISKA PRAMAISELA"
+      },
+      {
+        "nis": "252610339",
+        "name": "FABRIZIO ALHABSYI"
+      },
+      {
+        "nis": "252610340",
+        "name": "FADLI KHOIRUDIN"
+      },
+      {
+        "nis": "252610341",
+        "name": "FATCHAN NACHAR"
+      },
+      {
+        "nis": "252610342",
+        "name": "JACKSON JEREMY SINAMBELA"
+      },
+      {
+        "nis": "252610343",
+        "name": "JEREMY MARTUANI"
+      },
+      {
+        "nis": "252610344",
+        "name": "KANSA AILIN"
+      },
+      {
+        "nis": "252610345",
+        "name": "KARISA SYAKIB"
+      },
+      {
+        "nis": "252610346",
+        "name": "KEISYA SAFITRI ANJANI"
+      },
+      {
+        "nis": "252610347",
+        "name": "MARWANNA RIBKA GLORIA"
+      },
+      {
+        "nis": "252610348",
+        "name": "MUHAMAD RAZHALVA AR RIZKY"
+      },
+      {
+        "nis": "252610349",
+        "name": "MUHAMMAD DENIZ FARSHAD ALBAYHAQI"
+      },
+      {
+        "nis": "252610350",
+        "name": "MUHAMMAD FAIZ"
+      },
+      {
+        "nis": "252610351",
+        "name": "MUHAMMAD SURUR SANTOSA"
+      },
+      {
+        "nis": "252610352",
+        "name": "NABILA AULIA ZAHRO"
+      },
+      {
+        "nis": "252610353",
+        "name": "NAYLA AS SHIFA ZAHRA"
+      },
+      {
+        "nis": "252610354",
+        "name": "NAZWA AULIA PUTRI"
+      },
+      {
+        "nis": "252610355",
+        "name": "RAGIL JUMADI ALEX"
+      },
+      {
+        "nis": "252610356",
+        "name": "RESKI ADITIA"
+      },
+      {
+        "nis": "252610357",
+        "name": "RINDU LESTARI"
+      },
+      {
+        "nis": "252610358",
+        "name": "RISMAWATI"
+      },
+      {
+        "nis": "252610359",
+        "name": "SANDI MARDIANSYAH"
+      },
+      {
+        "nis": "252610360",
+        "name": "SHERIL NOVITA ANGGRAENI"
+      },
+      {
+        "nis": "252610361",
+        "name": "SHINTA PUSPITA SARI"
+      },
+      {
+        "nis": "252610362",
+        "name": "SITI NUR ANISA"
+      },
+      {
+        "nis": "252610363",
+        "name": "SITI NURHALIMAH"
+      },
+      {
+        "nis": "252610364",
+        "name": "SURYANA"
+      },
+      {
+        "nis": "252610365",
+        "name": "SYAHFA IDA RAMADANI"
+      },
+      {
+        "nis": "252610366",
+        "name": "VELOXA AURELLIA JOYANA"
+      },
+      {
+        "nis": "252610367",
+        "name": "ZEAN ADITYA ALFARIZI"
+      }
+    ]
+  }
+}

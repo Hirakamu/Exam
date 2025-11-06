@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sistem Ujian — Client Render</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Smooth collapse/expand using max-height animation */
+    .collapsible {
+      overflow: hidden;
+      transition: max-height 300ms cubic-bezier(.4, 0, .2, 1);
+      will-change: max-height;
+    }
+
+    .toggle-icon {
+      display: inline-block;
+      transition: transform 200ms ease;
+    }
+
+    .room-btn:hover {
+      background-color: rgba(34, 197, 94, 0.06);
+    }
+
+    .room-btn:focus {
+      outline: 2px solid rgba(99, 102, 241, 0.4);
+      outline-offset: 2px;
+    }
+
+    .toggle-btn:focus {
+      outline: 2px solid rgba(99, 102, 241, 0.12);
+      outline-offset: 2px;
+    }
+
+    /* Spinner */
+    .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(0, 0, 0, 0.08);
+      border-top-color: rgba(59, 130, 246, 0.8);
+      border-radius: 50%;
+      animation: spin 800ms linear infinite;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-white text-gray-900 font-sans">
+  <div class="max-w-7xl mx-auto px-4 py-6">
+
+    <!-- Header -->
+    <header class="items-center">
+      <div class="text-center">
+        <div class="font-bold text-lg">SMAN 2 Cikarang Pusat</div>
+        <div class="text-sm text-gray-500">Moving For Bright Future</div>
+      </div>
+    </header>
+
+    <div class="mt-4 flex items-center justify-between">
+      <div class="text-sm text-gray-600">Halo, <span id="teacher-name" class="font-medium"></span></div>
+      <div>
+        <button id="logout-btn" aria-label="Logout"
+          class="text-sm px-3 py-1 rounded border bg-red-50 text-red-600 hover:bg-red-100">Logout</button>
+      </div>
+    </div>
+
+    <!-- Global export format selector (one place for all downloads) -->
+    <div id="global-export-area" class="mt-4 flex items-center gap-3">
+      <label for="global-format-select" class="text-sm text-gray-600">Format download:</label>
+      <select id="global-format-select" class="text-sm px-2 py-1 rounded border bg-white">
+        <option value="csv">CSV</option>
+        <option value="json">JSON</option>
+        <option value="xml">XML</option>
+        <option value="excel">Excel</option>
+      </select>
+      <span class="text-xs text-gray-500">Pilih format untuk semua tombol download.</span>
+    </div>
+
+    <!-- Dashboard -->
+    <section id="dashboard" class="mt-6 space-y-6">
+      <!-- placeholders will be rendered by JS -->
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t mt-10 pt-4 text-sm text-gray-500">
+      <div class="w-full text-center">Hak Cipta &copy; 2025 SMAN 2 Cikarang Pusat</div>
+      <div class="muted text-center text-gray-400">Siswa Kelas 11</div>
+    </footer>
+  </div>
+
+  <script>
+    // Utility helpers
+    const el = (tag, attrs = {}, ...children) => {
+      const node = document.createElement(tag);
+      Object.entries(attrs).forEach(([k, v]) => {
+        if (k === 'class') node.className = v;
+        else if (k.startsWith('data-')) node.setAttribute(k, v);
+        else if (k === 'disabled' && v) node.disabled = true;
+        else node[k] = v;
+      });
+      children.flat().forEach(c => node.append(typeof c === 'string' ? document.createTextNode(c) : c));
+      return node;
+    };
+
+    // Small date formatter for ISO timestamps
+    function fmtDate(iso) {
+      if (!iso) return '';
+      try {
+        const d = new Date(iso);
+        if (isNaN(d)) return iso;
+        return d.toLocaleString();
+      } catch (e) {
+        return iso;
+      }
+    }
+
+    // CSV helpers
+    function toCSV(rows, columns) {
+      const esc = (v) => {
+        if (v === null || v === undefined) return '';
+        const s = String(v);
+        if (s.includes(',') || s.includes('\n') || s.includes('"')) {
+          return '"' + s.replace(/"/g, '""') + '"';
+        }
+        return s;
+      };
+      const header = columns.map(c => esc(c.header)).join(',') + '\n';
+      const body = rows.map(r => columns.map(c => esc(c.value(r))).join(',')).join('\n');
+      return header + body;
+    }
+
+    function downloadCSV(filename, content) {
+      const blob = new Blob([content], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => { URL.revokeObjectURL(url); a.remove(); }, 1000);
+    }
+
+    // Generic exporters
+    function toJSONContent(rows) {
+      return JSON.stringify(rows, null, 2);
+    }
+
+    function toXML(rows, rootName = 'students', itemName = 'student') {
+      const esc = s => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      let out = `<?xml version="1.0" encoding="UTF-8"?>\n<${rootName}>\n`;
+      rows.forEach(r => {
+        out += `  <${itemName}>\n`;
+        Object.keys(r).forEach(k => {
+          out += `    <${k}>${esc(r[k])}</${k}>\n`;
+        });
+        out += `  </${itemName}>\n`;
+      });
+      out += `</${rootName}>`;
+      return out;
+    }
+
+    // Simple Excel 2003 XML (SpreadsheetML) generator which Excel can open
+    function toExcelXML(rows, sheetName = 'Sheet1') {
+      const esc = s => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      const cols = rows.length ? Object.keys(rows[0]) : [];
+      let xml = `<?xml version="1.0"?>\n<?mso-application progid="Excel.Sheet"?>\n<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">\n<Worksheet ss:Name="${esc(sheetName)}">\n<Table>\n`;
+      // header
+      if (cols.length) {
+        xml += '<Row>\n' + cols.map(c => `<Cell><Data ss:Type="String">${esc(c)}</Data></Cell>`).join('') + '\n</Row>\n';
+      }
+      rows.forEach(r => {
+        xml += '<Row>\n' + cols.map(c => `<Cell><Data ss:Type="String">${esc(r[c])}</Data></Cell>`).join('') + '\n</Row>\n';
+      });
+      xml += '</Table>\n</Worksheet>\n</Workbook>';
+      return xml;
+    }
+
+    function downloadContent(filename, content, mime) {
+      const blob = new Blob([content], { type: mime });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => { URL.revokeObjectURL(url); a.remove(); }, 1000);
+    }
+
+    // Data holder: server returns an array of resources (subjects)
+    let resources = [];
+
+    // Simple helper to show a temporary loading or error message in the dashboard
+    function showMessage(msg) {
+      const root = document.getElementById('dashboard');
+      if (!root) return;
+      root.innerHTML = '';
+      const box = el('div', { class: 'bg-yellow-50 border-l-4 border-yellow-300 p-4 text-sm' }, msg);
+      root.appendChild(box);
+    }
+
+    function renderStats(container, stats) {
+      const grid = el('div', { class: 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4' });
+      (stats || []).forEach((s) => {
+        const card = el('div', { class: 'bg-white border rounded-lg shadow-sm p-4' },
+          el('div', { class: 'flex items-center' },
+            el('div', { class: 'flex-1' },
+              el('div', { class: 'text-lg font-semibold text-gray-500' }, s.title)
+            ),
+            el('div', { class: ' flex items-center justify-center h-12 w-12 rounded-full text-2xl font-semibold' }, String(s.value))
+          )
+        );
+        grid.appendChild(card);
+      });
+      container.appendChild(grid);
+    }
+
+    function renderSoalUjian(container, gradeData) {
+      const card = el('div', { class: 'bg-white border rounded-lg shadow-sm p-4' },
+        el('div', {},
+          el('div', { class: 'grid grid-cols-2 items-center' },
+            el('div', { class: 'text-lg font-semibold mb-3' }, 'Soal Ujian')
+          )
+        )
+      );
+      if (gradeData) {
+        const grid = el('div', { class: 'mt-3 grid grid-cols-1 gap-2' });
+        // support typical grades X, XI, XII but iterate keys so it's flexible
+        Object.keys(gradeData).forEach(level => {
+          const g = gradeData[level];
+          if (!g) return;
+          // treat missing enabled flag as true (backwards compatibility)
+          const enabled = typeof g.enabled === 'boolean' ? g.enabled : true;
+          if (enabled) {
+            const label = `Edit Soal Kelas ${level}`;
+            const btn = el('button', { class: 'text-sm w-full px-2 py-2 rounded border text-left bg-indigo-50' }, label);
+            grid.appendChild(btn);
+          } else {
+            const label = `Edit Soal Kelas ${level}`;
+            const btn = el('button', { class: 'text-sm w-full px-2 py-2 rounded border text-left bg-gray-100 text-gray-400 opacity-70 cursor-not-allowed', disabled: true, 'aria-disabled': 'true' }, label);
+            grid.appendChild(btn);
+          }
+        });
+        card.appendChild(grid);
+      } else {
+        card.appendChild(el('div', {}, el('div', { class: 'font-medium mb-2' }, 'Data kelas tidak tersedia.')));
+      }
+      container.appendChild(card);
+    }
+
+    function renderCollectedAnswers(container, gradeData, subjectName) {
+      const card = el('div', { class: 'bg-white border rounded-lg shadow-sm p-4' },
+        el('div', { class: 'flex items-center justify-between mb-3' }, el('h3', { class: 'text-lg font-semibold' }, 'Jawaban Ujian yang sudah dikumpulkan'))
+      );
+      if (gradeData) {
+        // For each grade, create a collapsible section to save vertical space
+        Object.entries(gradeData).forEach(([level, data]) => {
+          const enabled = typeof data.enabled === 'boolean' ? data.enabled : true;
+
+          // Header row with toggle button
+          const headerRow = el('div', { class: 'flex items-center justify-between mt-3' });
+          const title = el('div', { class: 'font-medium flex items-center gap-3' }, `Kelas ${level}`);
+          // badge showing submitted / total
+          const submittedCount = Array.isArray(data.submitted) ? data.submitted.length : 0;
+          const totalRooms = Array.isArray(data.rooms) ? data.rooms.length : 0;
+          const badge = el('span', { class: 'text-xs px-2 py-0.5 rounded bg-green-50 text-green-700 border border-green-100' }, `${submittedCount}/${totalRooms}`);
+          title.appendChild(badge);
+
+          const toggleBtn = el('button', { class: 'toggle-btn text-sm px-3 py-1 rounded border bg-gray-50 hover:bg-gray-100 flex items-center', 'aria-expanded': 'false', 'aria-controls': `rooms-${level}`, 'aria-label': `Toggle Kelas ${level}` },
+            el('span', { class: 'toggle-icon mr-2' }, '\u25B6'), // chevron
+            el('span', {}, 'Tampilkan')
+          );
+
+          // Per-grade controls: we show only a spinner and toggle here. The global format selector
+          // is placed at the top of the page (id="global-format-select") and used by all exports.
+          headerRow.appendChild(title);
+          const rightControls = el('div', { class: 'flex items-center gap-2' });
+          const gradeSpinner = el('span', { class: 'spinner hidden', title: 'Loading' });
+          rightControls.appendChild(gradeSpinner);
+          rightControls.appendChild(toggleBtn);
+          headerRow.appendChild(rightControls);
+
+          // Collapsible content container (initially hidden)
+          const content = el('div', { id: `rooms-${level}`, class: 'mt-2 collapsible', 'aria-hidden': 'true', style: 'max-height:0px;' });
+          const roomsGrid = el('div', { class: 'grid grid-cols-3 gap-2' });
+
+          (data.rooms || []).forEach(room => {
+            const label = `${level}-${room}`;
+            if (enabled) {
+              const submitted = Array.isArray(data.submitted) && data.submitted.includes(room);
+              const classes = `text-sm px-2 py-2 rounded border text-left ${submitted ? 'bg-green-50' : ''}`;
+              const btn = el('button', { class: classes + ' room-btn', title: `Buka jawaban ${label}`, type: 'button' }, label);
+              // attach click handler to fetch students for this subject/grade/room
+              btn.addEventListener('click', async () => {
+                // create or reuse a panel inside this content container
+                let panel = content.querySelector('.students-panel');
+                if (!panel) {
+                  panel = el('div', { class: 'students-panel mt-3 bg-white border rounded p-3' });
+                  content.appendChild(panel);
+                }
+                panel.innerHTML = '';
+                panel.appendChild(el('div', { class: 'text-sm text-gray-500 mb-2' }, `Memuat daftar siswa untuk ${label}...`));
+                try {
+                  const url = `./dashboard/${encodeURIComponent(subjectName)}/${encodeURIComponent(level)}/${encodeURIComponent(room)}`;
+                  const res = await fetch(url, { method: 'GET', cache: 'no-store' });
+                  if (!res.ok) throw new Error('Network error: ' + res.status);
+                  const students = await res.json();
+                  // store loaded students for export
+                  panel._students = students;
+                  // expect students to be an array
+                  if (!Array.isArray(students) || students.length === 0) {
+                    panel.innerHTML = '';
+                    panel.appendChild(el('div', { class: 'text-sm text-gray-600' }, 'Tidak ada siswa yang ditemukan atau belum ada yang mengumpulkan.'));
+                    return;
+                  }
+                  // render list
+                  panel.innerHTML = '';
+                  const header = el('div', { class: 'flex items-center justify-between mb-2' }, el('div', { class: 'font-medium' }, `Siswa Terkumpul — ${label}`));
+                  const list = el('div', { class: 'space-y-2 max-h-64 overflow-auto' });
+                  students.forEach(st => {
+                    // Accept multiple possible shapes; prefer the explicit keys in your sample
+                    const name = st.name || st.nama || st.fullname || '(nama tidak tersedia)';
+                    const nis = st.nis || st.id || st.student_id || st.nis || '';
+                    const correct = typeof st.correct_answers === 'number' ? st.correct_answers : (st.correct || st.correct_answers || 0);
+                    const total = typeof st.total_questions === 'number' ? st.total_questions : (st.total || st.total_questions || 0);
+                    const rawTime = st.submission_time || st.submitted_at || st.time || '';
+                    const when = fmtDate(rawTime);
+                    const percent = (total > 0) ? Math.round((correct / total) * 100) : null;
+
+                    const left = el('div', {}, el('div', { class: 'font-medium' }, name), el('div', { class: 'text-xs text-gray-500' }, nis));
+                    const rightText = `${correct}/${total}${percent !== null ? ' • ' + percent + '%' : ''}${when ? ' • ' + when : ''}`;
+                    const right = el('div', { class: 'text-gray-500 text-xs text-right' }, rightText);
+
+                    const row = el('div', { class: 'flex items-center justify-between text-sm py-1 px-2 rounded hover:bg-gray-50' }, left, right);
+                    list.appendChild(row);
+                  });
+                  // export class controls (format select + button + spinner)
+                  // Use the global format selector (id="global-format-select") for class exports
+                  const exportClassBtn = el('button', { class: 'text-sm px-2 py-1 rounded border bg-green-50 text-green-700 hover:bg-green-100' }, 'Download');
+                  const classSpinner = el('span', { class: 'spinner hidden', title: 'Loading' });
+                  const controls = el('div', { class: 'flex items-center gap-2' });
+                  // Do not duplicate the format selector here; use the shared gradeFormatSelect value instead
+                  controls.appendChild(classSpinner);
+                  controls.appendChild(exportClassBtn);
+                  header.appendChild(controls);
+
+                  exportClassBtn.addEventListener('click', () => {
+                    const rows = panel._students || [];
+                    // read format from the global selector
+                    const fmt = (document.getElementById('global-format-select') && document.getElementById('global-format-select').value) ? document.getElementById('global-format-select').value : 'csv';
+                    if (!rows.length) {
+                      alert('Tidak ada data siswa untuk diekspor.');
+                      return;
+                    }
+                    const filenameBase = `${subjectName || 'subject'}-${level}-${room}-scores`;
+                    try {
+                      if (fmt === 'json') {
+                        downloadContent(filenameBase + '.json', toJSONContent(rows), 'application/json');
+                      } else if (fmt === 'xml') {
+                        downloadContent(filenameBase + '.xml', toXML(rows, 'students', 'student'), 'application/xml');
+                      } else if (fmt === 'excel') {
+                        downloadContent(filenameBase + '.xml', toExcelXML(rows, `${level}-${room}`), 'application/xml');
+                      } else {
+                        const columns = [
+                          { header: 'nis', value: r => r.nis || r.id || r.student_id || '' },
+                          { header: 'name', value: r => r.name || r.nama || '' },
+                          { header: 'correct_answers', value: r => r.correct_answers ?? r.correct ?? '' },
+                          { header: 'total_questions', value: r => r.total_questions ?? r.total ?? '' },
+                          { header: 'submission_time', value: r => r.submission_time || r.submitted_at || r.time || '' }
+                        ];
+                        const csv = toCSV(rows, columns);
+                        downloadCSV(filenameBase + '.csv', csv);
+                      }
+                    } catch (e) {
+                      console.error('export class failed', e);
+                      alert('Gagal mengekspor data.');
+                    }
+                  });
+                  panel.appendChild(header);
+                  panel.appendChild(list);
+                } catch (err) {
+                  panel.innerHTML = '';
+                  panel.appendChild(el('div', { class: 'text-sm text-red-600' }, 'Gagal memuat daftar siswa.'));
+                  console.error('fetch students failed', err);
+                }
+              });
+              roomsGrid.appendChild(btn);
+            } else {
+              roomsGrid.appendChild(el('button', { class: 'text-sm px-2 py-2 rounded border text-left bg-gray-100 text-gray-400 opacity-70 cursor-not-allowed', disabled: true, 'aria-disabled': 'true' }, label));
+            }
+          });
+
+          content.appendChild(roomsGrid);
+
+          // Toggle behavior
+          // Animated toggle using measured scrollHeight for smooth transition
+          toggleBtn.addEventListener('click', () => {
+            const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+            const iconSpan = toggleBtn.querySelector('.toggle-icon');
+            const labelSpan = toggleBtn.querySelectorAll('span')[1];
+            if (isExpanded) {
+              // collapse
+              toggleBtn.setAttribute('aria-expanded', 'false');
+              content.setAttribute('aria-hidden', 'true');
+              // animate to 0
+              content.style.maxHeight = content.scrollHeight + 'px';
+              // force repaint
+              void content.offsetHeight;
+              content.style.maxHeight = '0px';
+              iconSpan.style.transform = 'rotate(0deg)';
+              labelSpan.textContent = 'Tampilkan';
+            } else {
+              // expand
+              toggleBtn.setAttribute('aria-expanded', 'true');
+              content.setAttribute('aria-hidden', 'false');
+              // set to measured height
+              content.style.maxHeight = content.scrollHeight + 'px';
+              iconSpan.style.transform = 'rotate(90deg)';
+              labelSpan.textContent = 'Sembunyikan';
+            }
+            // after transition, if expanded, remove max-height to allow natural growth; if collapsed keep 0
+            const onTransitionEnd = (e) => {
+              if (toggleBtn.getAttribute('aria-expanded') === 'true') {
+                content.style.maxHeight = '';
+              }
+              content.removeEventListener('transitionend', onTransitionEnd);
+            };
+            content.addEventListener('transitionend', onTransitionEnd);
+          });
+
+          // Export grade behavior: fetch grade endpoint /dashboard/<subject>/<grade> and export in chosen format
+          const gradeExportBtn = el('button', { class: 'text-sm px-2 py-1 rounded border bg-indigo-50 text-indigo-700 hover:bg-indigo-100' }, 'Download');
+          rightControls.appendChild(gradeExportBtn);
+
+          gradeExportBtn.addEventListener('click', async () => {
+            // read format from the global selector
+            const fmt = (document.getElementById('global-format-select') && document.getElementById('global-format-select').value) ? document.getElementById('global-format-select').value : 'csv';
+            gradeSpinner.classList.remove('hidden');
+            try {
+              const url = `./dashboard/${encodeURIComponent(subjectName)}/${encodeURIComponent(level)}`;
+              const res = await fetch(url, { method: 'GET', cache: 'no-store' });
+              if (!res.ok) throw new Error('Network error: ' + res.status);
+              const classes = await res.json();
+              // classes expected array of { class, total_students, students_submitted: [...] }
+              const all = [];
+              (Array.isArray(classes) ? classes : []).forEach(cl => {
+                const cls = cl.class || cl.classe || cl.name || '';
+                (Array.isArray(cl.students_submitted) ? cl.students_submitted : []).forEach(s => { s._room = cls; all.push(s); });
+              });
+              if (!all.length) {
+                card.appendChild(el('div', { class: 'text-sm text-gray-600 mt-2' }, 'Tidak ada data untuk diekspor.'));
+                gradeSpinner.classList.add('hidden');
+                return;
+              }
+              // build filename
+              const filenameBase = `${subjectName || 'subject'}-${level}-all-scores`;
+              if (fmt === 'json') {
+                downloadContent(filenameBase + '.json', toJSONContent(all), 'application/json');
+              } else if (fmt === 'xml') {
+                downloadContent(filenameBase + '.xml', toXML(all, 'students', 'student'), 'application/xml');
+              } else if (fmt === 'excel') {
+                downloadContent(filenameBase + '.xml', toExcelXML(all, `${level}`), 'application/xml');
+              } else {
+                // CSV
+                const columns = [
+                  { header: 'nis', value: r => r.nis || r.id || r.student_id || '' },
+                  { header: 'name', value: r => r.name || r.nama || '' },
+                  { header: 'correct_answers', value: r => r.correct_answers ?? r.correct ?? '' },
+                  { header: 'total_questions', value: r => r.total_questions ?? r.total ?? '' },
+                  { header: 'submission_time', value: r => r.submission_time || r.submitted_at || r.time || '' },
+                  { header: 'room', value: r => r._room || '' }
+                ];
+                const csv = toCSV(all, columns);
+                downloadCSV(filenameBase + '.csv', csv);
+              }
+            } catch (e) {
+              console.error('export grade failed', e);
+              card.appendChild(el('div', { class: 'text-sm text-red-600 mt-2' }, 'Gagal mengekspor data.'));
+            } finally {
+              gradeSpinner.classList.add('hidden');
+            }
+          });
+          rightControls.appendChild(gradeExportBtn);
+
+          // Append header + content to card
+          card.appendChild(headerRow);
+          card.appendChild(content);
+        });
+      } else {
+        card.appendChild(el('div', {}, el('div', { class: 'font-medium mb-2' }, 'Data kelas tidak tersedia.')));
+      }
+      container.appendChild(card);
+    }
+
+    // Render full dashboard for all resources (subjects)
+    function renderDashboard() {
+      const root = document.getElementById('dashboard');
+      root.innerHTML = '';
+      if (!resources || resources.length === 0) {
+        showMessage('Tidak ada data pelajaran.');
+        return;
+      }
+
+      // For each subject, render a separate dashboard block
+      resources.forEach(resource => {
+        const subjectHeader = el('div', { class: 'mb-3' }, el('h2', { class: 'text-xl font-bold' }, resource.name || 'Pelajaran'));
+        const mainGrid = el('div', { class: 'grid grid-cols-1 lg:grid-cols-3 gap-6 mt-2 mb-6' });
+
+        const leftCol = el('div', { class: 'lg:col-span-1 space-y-6' });
+        renderStats(leftCol, resource.data && resource.data.stats ? resource.data.stats : []);
+        renderSoalUjian(leftCol, resource.data && resource.data.gradeData ? resource.data.gradeData : null);
+
+        const rightCol = el('div', { class: 'lg:col-span-2 space-y-6' });
+        renderCollectedAnswers(rightCol, resource.data && resource.data.gradeData ? resource.data.gradeData : null, resource.name || '');
+
+        mainGrid.appendChild(leftCol);
+        mainGrid.appendChild(rightCol);
+
+        const wrapper = el('div', { class: 'bg-gray-50 p-4 rounded-md border' }, subjectHeader, mainGrid);
+        root.appendChild(wrapper);
+      });
+    }
+
+    // Teacher name stored in localStorage key 'nameT'
+    function loadTeacherName() {
+      try {
+        const name = localStorage.getItem('nameT') || '';
+        const elName = document.getElementById('teacher-name');
+        if (elName) elName.textContent = name ? name : '<Guru>';
+      } catch (e) {
+        console.error('localStorage read failed', e);
+      }
+    }
+
+    // Logout: remove keys and redirect
+    function attachLogout() {
+      const btn = document.getElementById('logout-btn');
+      if (!btn) return;
+      btn.addEventListener('click', () => {
+        const displayName = document.getElementById('teacher-name').textContent;
+        if (displayName === '<Guru>') {
+          alert('Nama guru tidak ditemukan.');
+          return;
+        }
+        if (!confirm('Yakin ingin keluar?')) return;
+        try {
+          localStorage.removeItem('nameT');
+          localStorage.removeItem('hash');
+          // redirect to login page in same folder
+          window.location.href = '.';
+        } catch (e) {
+          console.error('Logout failed', e);
+          localStorage.removeItem('nameT');
+          localStorage.removeItem('hash');
+          window.location.href = '.';
+        }
+      });
+    }
+
+    // Fetch JSON from './dashboard' and populate resources array
+    async function fetchDataAndRender() {
+      const root = document.getElementById('dashboard');
+      if (root) root.innerHTML = '';
+      showMessage('Memuat data...');
+      try {
+        const payload = { hash: (() => { try { return localStorage.getItem('hash') } catch (e) { return null } })() };
+        const res = await fetch('./dashboard', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          cache: 'no-store',
+          body: JSON.stringify(payload)
+        });
+        if (!res.ok) throw new Error('Network response was not ok: ' + res.status);
+
+        const contentType = res.headers.get('content-type') || '';
+        if (!contentType.includes('application/json')) {
+          throw new Error('Expected JSON response but got: ' + contentType);
+        }
+        const data = await res.json();
+        // Accept either an array of resources or an object with resources key
+        if (Array.isArray(data)) {
+          resources = data;
+        } else if (Array.isArray(data.resources)) {
+          resources = data.resources;
+        } else {
+          // fallback: single subject object
+          resources = [data];
+        }
+      } catch (err) {
+        console.error('Failed to fetch dashboard data', err);
+        showMessage('Gagal memuat data. Coba muat ulang halaman.');
+        resources = [];
+      }
+      renderDashboard();
+    }
+
+    // Initialize
+    (function init() {
+      loadTeacherName();
+      attachLogout();
+      // fetch remote data and then render
+      fetchDataAndRender();
+    })();
+  </script>
+</body>
+
+</html>

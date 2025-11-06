@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sistem Ujian SMAN 2 Cikarang Pusat{% endblock %}</title>
+
+    <!-- Material Web -->
+    <script type="module">
+        import 'https://esm.run/@material/web/all.js';
+    </script>
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <md-elevated-card>
+    <header>
+        <h1>Sistem Ujian SMAN 2 Cikarang Pusat</h1>
+        <p>Moving For Bright Future</p>
+        <p style="color: red;">Prototype</p>
+    </header>
+    {% block content %}{% endblock %}
+
+    <footer>
+        <p>Hak Cipta © 2025 SMAN 2 Cikarang Pusat</p>
+        <p>Karya Siswa Kelas 11</p>
+    </footer>
+    </md-elevated-card>
+</body>
+
+</html>

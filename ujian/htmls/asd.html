@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Form Prototype</title>
+  <script type="module">
+    import 'https://esm.run/@material/web/all.js';
+  </script>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #f7f7f7;
+      display: flex;
+      justify-content: center;
+      padding: 40px;
+    }
+    form {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 30px;
+      width: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    h2 { margin-top: 0; font-weight: 500; }
+  </style>
+</head>
+<body>
+  <form id="surveyForm">
+    <h2>Feedback Form</h2>
+
+    <md-outlined-text-field label="Full name" required></md-outlined-text-field>
+    <md-outlined-text-field label="Email" type="email"></md-outlined-text-field>
+
+    <p>How satisfied are you?</p>
+    <md-radio-group>
+      <md-radio value="1" label="Very Unsatisfied"></md-radio>
+      <md-radio value="2" label="Unsatisfied"></md-radio>
+      <md-radio value="3" label="Neutral"></md-radio>
+      <md-radio value="4" label="Satisfied"></md-radio>
+      <md-radio value="5" label="Very Satisfied"></md-radio>
+    </md-radio-group>
+
+    <md-outlined-text-field
+      label="Comments"
+      textarea
+      rows="3">
+    </md-outlined-text-field>
+
+    <md-checkbox checked>Subscribe to updates</md-checkbox>
+
+    <md-filled-button type="submit">Submit</md-filled-button>
+  </form>
+
+  <script type="module">
+    document.getElementById('surveyForm').addEventListener('submit', e => {
+      e.preventDefault();
+      alert('Form submitted (prototype only)');
+    });
+  </script>
+</body>
+</html>

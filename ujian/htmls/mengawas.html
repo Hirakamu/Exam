@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sistem Ujian SMAN 2 Cikarang Pusat</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-white text-gray-900 font-sans">
+  <div class="max-w-7xl mx-auto px-4 py-6">
+
+    <!-- Header -->
+    <header class="items-center">
+      <div class="text-center">
+        <div class="font-bold text-lg">SMAN 2 Cikarang Pusat</div>
+        <div class="text-sm text-gray-500">Moving For Bright Future</div>
+      </div>
+    </header>
+
+    <main role="main" class="min-h-[70vh] py-8">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex flex-col md:flex-row gap-6">
+          <!-- Controls -->
+          <aside class="w-full md:w-1/3 bg-white border rounded-lg shadow-sm p-4 self-start">
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="text-lg font-semibold">Kontrol Panel</h2>
+              <div class="text-sm text-gray-500"></div>
+            </div>
+
+            <div class="space-y-3">
+              <div>
+                <label class="block text-sm font-medium text-gray-700">Mata Pelajaran</label>
+                <div class="mt-1 text-sm text-gray-700">Kelas 10 - Matematika</div>
+                <div class="mt-1 text-sm text-gray-700">Kelas 11 - Matematika Tingkat Lanjut</div>
+              </div>
+
+              <div>
+                <button id="btn-generate-token"
+                  class="px-3 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 text-sm">Buat token</button>
+                <button id="btn-attendants" class="px-3 py-2 bg-gray-100 rounded hover:bg-gray-200 text-sm">Daftar
+                  Hadir</button>
+              </div>
+
+            </div>
+
+
+          </aside>
+
+          <!-- Student Table -->
+          <div class="flex-grow gap-4 flex flex-col items-start">
+            <section class="w-full bg-white border rounded-lg shadow-sm p-4">
+              <div class="flex items-center justify-between mb-4">
+                <h2 class="text-lg font-semibold">Siswa kelas X</h2>
+                <div class="text-sm text-gray-500">5 siswa</div>
+              </div>
+              <div class="overflow-auto">
+                <table class="min-w-full text-left border-collapse">
+                  <thead>
+                    <tr class="text-sm text-gray-600 border-b">
+                      <th class="p-4">Nama</th>
+                      <th class="p-2">NIS</th>
+                      <th class="p-2">Kelas</th>
+                      <th class="p-2">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="border-b">
+                      <td class="p-2">Ahmad Rahman</td>
+                      <td class="p-2">101</td>
+                      <td class="p-2">10A</td>
+                      <td class="p-2">
+                        <span class="px-2 py-1 rounded text-xs text-white" style="background-color:#10b981">EXAM</span>
+                      </td>
+                    </tr>
+
+                    <tr class="border-b">
+                      <td class="p-2">Siti Nur</td>
+                      <td class="p-2">102</td>
+                      <td class="p-2">10A</td>
+                      <td class="p-2">
+                        <span class="px-2 py-1 rounded text-xs text-black" style="background-color:#fde68a">IN
+                          EXAM</span>
+                      </td>
+                    </tr>
+
+                    <tr class="border-b">
+                      <td class="p-2">Budi Setiawan</td>
+                      <td class="p-2">103</td>
+                      <td class="p-2">10B</td>
+                      <td class="p-2">
+                        <span class="px-2 py-1 rounded text-xs text-white"
+                          style="background-color:#6b7280">OFFLINE</span>
+                      </td>
+                    </tr>
+
+                    <tr class="border-b">
+                      <td class="p-2">Maya Putri</td>
+                      <td class="p-2">104</td>
+                      <td class="p-2">10B</td>
+                      <td class="p-2">
+                        <span class="px-2 py-1 rounded text-xs text-white" style="background-color:#6b7280">DONE</span>
+                      </td>
+                    </tr>
+
+                    <tr class="border-b">
+                      <td class="p-2">Rian Pratama</td>
+                      <td class="p-2">105</td>
+                      <td class="p-2">10C</td>
+                      <td class="p-2">
+                        <span class="px-2 py-1 rounded text-xs text-white"
+                          style="background-color:#ef4444">ABSENT</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="w-full bg-white border rounded-lg shadow-sm p-4">
+              <div class="flex items-center justify-between mb-4">
+                <h2 class="text-lg font-semibold">Siswa kelas XI</h2>
+                <div class="text-sm text-gray-500">5 siswa</div>
+              </div>
+              <div class="overflow-auto">
+                <table class="min-w-full text-left border-collapse">
+                  <thead>
+                    <tr class="text-sm text-gray-600 border-b">
+                      <th class="p-4">Nama</th>
+                      <th class="p-2">NIS</th>
+                      <th class="p-2">Kelas</th>
+                      <th class="p-2">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="border-b">
+                      <td class="p-2">Ahmad Rahman</td>
+                      <td class="p-2">101</td>
+                      <td class="p-2">10A</td>
+                      <td class="p-2">
+                        <span class="px-2 py-1 rounded text-xs text-white" style="background-color:#10b981">EXAM</span>
+                      </td>
+                    </tr>
+
+                    <tr class="border-b">
+                      <td class="p-2">Siti Nur</td>
+                      <td class="p-2">102</td>
+                      <td class="p-2">10A</td>
+                      <td class="p-2">
+                        <span class="px-2 py-1 rounded text-xs text-black" style="background-color:#fde68a">IN
+                          EXAM</span>
+                      </td>
+                    </tr>
+
+                    <tr class="border-b">
+                      <td class="p-2">Budi Setiawan</td>
+                      <td class="p-2">103</td>
+                      <td class="p-2">10B</td>
+                      <td class="p-2">
+                        <span class="px-2 py-1 rounded text-xs text-white"
+                          style="background-color:#6b7280">OFFLINE</span>
+                      </td>
+                    </tr>
+
+                    <tr class="border-b">
+                      <td class="p-2">Maya Putri</td>
+                      <td class="p-2">104</td>
+                      <td class="p-2">10B</td>
+                      <td class="p-2">
+                        <span class="px-2 py-1 rounded text-xs text-white" style="background-color:#6b7280">DONE</span>
+                      </td>
+                    </tr>
+
+                    <tr class="border-b">
+                      <td class="p-2">Rian Pratama</td>
+                      <td class="p-2">105</td>
+                      <td class="p-2">10C</td>
+                      <td class="p-2">
+                        <span class="px-2 py-1 rounded text-xs text-white"
+                          style="background-color:#ef4444">ABSENT</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+
+        </div>
+      </div>
+    </main>
+
+    <script>
+        // UI helpers: modal (promise) and toast
+        function showModal(title, message, { okText = 'OK', cancelText = 'Cancel', showCancel = false } = {}) {
+          return new Promise(resolve => {
+            const backdrop = document.getElementById('modalBackdrop');
+            const t = document.getElementById('modalTitle');
+            const m = document.getElementById('modalMessage');
+            const btnOk = document.getElementById('modalOk');
+            const btnCancel = document.getElementById('modalCancel');
+
+            function cleanup(result) {
+              backdrop.classList.add('hidden');
+              btnOk.onclick = null;
+              btnCancel.onclick = null;
+              document.removeEventListener('keydown', onKey);
+              resolve(result);
+            }
+            function onKey(e) {
+              if (e.key === 'Escape') cleanup(false);
+              if (e.key === 'Enter') cleanup(true);
+            }
+
+            t.textContent = title || '';
+            m.textContent = message || '';
+            btnOk.textContent = okText;
+            btnCancel.textContent = cancelText;
+            btnCancel.style.display = showCancel ? '' : 'none';
+
+            btnOk.onclick = () => cleanup(true);
+            btnCancel.onclick = () => cleanup(false);
+
+            document.addEventListener('keydown', onKey);
+            backdrop.classList.remove('hidden');
+            btnOk.focus();
+          });
+        }
+    </script>
+
+    <!-- Modal (hidden by default) -->
+    <div id="modalBackdrop" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+      <div id="modal" class="bg-white rounded-lg shadow-lg w-full max-w-md p-6 mx-4">
+        <h3 id="modalTitle" class="text-lg font-semibold mb-2">Title</h3>
+        <p id="modalMessage" class="text-sm text-gray-700 mb-4">Message</p>
+        <div class="flex justify-end gap-2">
+          <button id="modalCancel" class="px-4 py-2 bg-gray-100 rounded">Cancel</button>
+          <button id="modalOk" class="px-4 py-2 bg-blue-600 text-white rounded">OK</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t mt-10 pt-4 text-sm text-gray-500">
+      <div class="w-full text-center">Hak Cipta &copy; 2025 SMAN 2 Cikarang Pusat</div>
+      <div class="muted text-center text-gray-400">Siswa Kelas 11</div>
+    </footer>
+  </div>
+</body>
+
+</html>

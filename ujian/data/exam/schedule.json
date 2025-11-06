@@ -1,0 +1,41 @@
+{
+    "schedule": [
+        {
+            "day": 1,
+            "subjects": [
+                {
+                    "count": 1,
+                    "grade": "X",
+                    "subject": "Fisika"
+                },
+                {
+                    "count": 1,
+                    "grade": "XI",
+                    "subject": "Fisika"
+                },
+                {
+                    "count": 1,
+                    "grade": "XII",
+                    "subject": "Fisika"
+                },
+                {
+                    "count": 2,
+                    "grade": "X",
+                    "subject": "Biologi"
+                },
+                {
+                    "count": 2,
+                    "grade": "XI",
+                    "room": "1-3",
+                    "subject": "Biologi"
+                },
+                {
+                    "count": 2,
+                    "grade": "XI",
+                    "room": "4-6",
+                    "subject": "Kimia"
+                }
+            ]
+        }
+    ]
+}

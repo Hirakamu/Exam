@@ -1,0 +1,681 @@
+{
+    "daftarguru": [
+        "Ila Fadilah, S. H.",
+        "Sri Purwanti, S. Pd.",
+        "Agus Mulyana, S. Pd.",
+        "Rohmat Mulia Permana, S.Ag.",
+        "Asep Sumardi, S. Pd., MM.",
+        "Rachmi Putri, S. Psi.",
+        "Nunung N. Ummah SE., M. Pd.",
+        "Neny Irmayanti, ST.",
+        "Dian Ludiawati, S.Pd.",
+        "Anton Mulyono, S. Pd.",
+        "Anggun Puspitasari, M. Pd.",
+        "Acam Sutisna, S. Pd.",
+        "Dr. Marham, S. Pd., M. Si.",
+        "Woro Kurnia Asih, S.Pd.",
+        "Atik Supriyanti, S. Kom.",
+        "Tri Harpeni, M.Pd.",
+        "Iis Eridah, S.Pd.",
+        "Mohamad Firdaus, S.Pd.",
+        "Andriyansah, S.Pd.",
+        "Siti Rohanah, M. Pd.",
+        "Mulyana, S. Pd. I., M. Si.",
+        "Ade Tabroni, S.Pd. I.",
+        "Diana, S.Pd, Msi.",
+        "Harun Al Rasid, S.Pd.",
+        "Wiwin Agustini, S.Pd.",
+        "Eman Suryana, SE.",
+        "Lilis Halimah, ST.",
+        "Nurlaela Jahuri, S.Pd.",
+        "Amsih Sri Astuti, S.Pd., M.Si.",
+        "Winda Amelia, S.Hum.",
+        "Dede Kurniawan, S.Pd.",
+        "Romi Pebriana, S.Pd.",
+        "Oman, S.Pd.",
+        "Melita Herlinda, M.Sn.",
+        "Noviana, S.Psi.",
+        "Asheyla Nassetya, S.Pd.",
+        "Wahyu Agustriyani, S.Pd.",
+        "Siti Syifa Fajar Tirta Lestari, M.Pd.",
+        "Nurul Nuraliyah, S. Pd."
+    ],
+    "subject": {
+        "X": [
+            "Bahasa Indonesia",
+            "Bahasa Inggris Umum",
+            "Bimbingan Konseling",
+            "Biologi",
+            "Ekonomi",
+            "Fisika",
+            "Geografi",
+            "Informatika",
+            "Kimia",
+            "Matematika Umum",
+            "Pendidikan Agama dan Budi Pekerti",
+            "Pendidikan Pancasila dan Kewarganegaraan",
+            "Penjaskes",
+            "Sejarah",
+            "Seni Musik",
+            "Sosiologi"
+        ],
+        "XI": [
+            "Bahasa Indonesia",
+            "Bahasa Inggris Tingkat Lanjut",
+            "Bahasa Inggris Umum",
+            "Bimbingan Konseling",
+            "Biologi",
+            "Ekonomi",
+            "Fisika",
+            "Geografi",
+            "Kimia",
+            "Matematika Tingkat Lanjut",
+            "Matematika Wajib",
+            "Pendidikan Agama dan Budi Pekerti",
+            "Pendidikan Pancasila dan Kewarganegaraan",
+            "Penjaskes",
+            "Prakarya",
+            "Sejarah",
+            "Seni Budaya",
+            "Seni Musik",
+            "Sosiologi"
+        ],
+        "XII": [
+            "Bahasa Indonesia",
+            "Bahasa Inggris Umum",
+            "Bimbingan Konseling",
+            "Biologi",
+            "Ekonomi",
+            "Fisika",
+            "Geografi",
+            "Informatika Tingkat Lanjut",
+            "Kimia",
+            "Matematika Tingkat Lanjut",
+            "Matematika Wajib",
+            "Pendidikan Agama dan Budi Pekerti",
+            "Pendidikan Pancasila dan Kewarganegaraan",
+            "Penjaskes",
+            "Prakarya",
+            "Sejarah",
+            "Sejarah Indonesia",
+            "Seni Budaya",
+            "Sosiologi"
+        ]
+    },
+    "guru": [
+        {
+            "id": 1,
+            "name": "Ila Fadilah, S. H.",
+            "subject": [
+                {
+                    "name": "Sosiologi",
+                    "grade": [
+                        "X",
+                        "XI",
+                        "XII"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Sri Purwanti, S. Pd.",
+            "subject": [
+                {
+                    "name": "Matematika Wajib",
+                    "grade": [
+                        "XI",
+                        "XII"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Agus Mulyana, S. Pd.",
+            "subject": [
+                {
+                    "name": "Ekonomi",
+                    "grade": [
+                        "XII"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "name": "Rohmat Mulia Permana, S.Ag.",
+            "subject": [
+                {
+                    "name": "Pendidikan Agama dan Budi Pekerti",
+                    "grade": [
+                        "X",
+                        "XI"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Asep Sumardi, S. Pd., MM.",
+            "subject": [
+                {
+                    "name": "Penjaskes",
+                    "grade": [
+                        "XII"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "name": "Rachmi Putri, S. Psi.",
+            "subject": [
+                {
+                    "name": "Bimbingan Konseling",
+                    "grade": [
+                        "XII"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "name": "Nunung N. Ummah SE., M. Pd.",
+            "subject": [
+                {
+                    "name": "Ekonomi",
+                    "grade": [
+                        "X",
+                        "XI"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "name": "Neny Irmayanti, ST.",
+            "subject": [
+                {
+                    "name": "Kimia",
+                    "grade": [
+                        "XI",
+                        "XII"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "name": "Dian Ludiawati, S.Pd.",
+            "subject": [
+                {
+                    "name": "Bahasa Indonesia",
+                    "grade": [
+                        "XI",
+                        "XII"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "name": "Anton Mulyono, S. Pd.",
+            "subject": [
+                {
+                    "name": "Biologi",
+                    "grade": [
+                        "X"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "name": "Anggun Puspitasari, M. Pd.",
+            "subject": [
+                {
+                    "name": "Bahasa Indonesia",
+                    "grade": [
+                        "XII"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "name": "Acam Sutisna, S. Pd.",
+            "subject": [
+                {
+                    "name": "Fisika",
+                    "grade": [
+                        "XI",
+                        "XII"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "name": "Dr. Marham, S. Pd., M. Si.",
+            "subject": [
+                {
+                    "name": "Seni Budaya",
+                    "grade": [
+                        "XI",
+                        "XII"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "name": "Woro Kurnia Asih, S.Pd.",
+            "subject": [
+                {
+                    "name": "Sejarah",
+                    "grade": [
+                        "X",
+                        "XI",
+                        "XII"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "name": "Atik Supriyanti, S. Kom.",
+            "subject": [
+                {
+                    "name": "Informatika",
+                    "grade": [
+                        "X"
+                    ]
+                },
+                {
+                    "name": "Informatika Tingkat Lanjut",
+                    "grade": [
+                        "XII"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "name": "Tri Harpeni, M.Pd.",
+            "subject": [
+                {
+                    "name": "Matematika Umum",
+                    "grade": [
+                        "X"
+                    ]
+                },
+                {
+                    "name": "Matematika Tingkat Lanjut",
+                    "grade": [
+                        "XII"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "name": "Iis Eridah, S.Pd.",
+            "subject": [
+                {
+                    "name": "Geografi",
+                    "grade": [
+                        "XI",
+                        "XII"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "name": "Mohamad Firdaus, S.Pd.",
+            "subject": [
+                {
+                    "name": "Bahasa Indonesia",
+                    "grade": [
+                        "X"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "name": "Andriyansah, S.Pd.",
+            "subject": [
+                {
+                    "name": "Penjaskes",
+                    "grade": [
+                        "X"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 20,
+            "name": "Siti Rohanah, M. Pd.",
+            "subject": [
+                {
+                    "name": "Bahasa Inggris Umum",
+                    "grade": [
+                        "XI"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 21,
+            "name": "Mulyana, S. Pd. I., M. Si.",
+            "subject": [
+                {
+                    "name": "Pendidikan Agama dan Budi Pekerti",
+                    "grade": [
+                        "XII"
+                    ]
+                },
+                {
+                    "name": "Sosiologi",
+                    "grade": [
+                        "X"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 22,
+            "name": "Ade Tabroni, S.Pd. I.",
+            "subject": [
+                {
+                    "name": "Pendidikan Agama dan Budi Pekerti",
+                    "grade": [
+                        "X"
+                    ]
+                },
+                {
+                    "name": "Sejarah Indonesia",
+                    "grade": [
+                        "XII"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 23,
+            "name": "Diana, S.Pd, Msi.",
+            "subject": [
+                {
+                    "name": "Prakarya",
+                    "grade": [
+                        "XI"
+                    ]
+                },
+                {
+                    "name": "Biologi",
+                    "grade": [
+                        "X",
+                        "XI"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 24,
+            "name": "Harun Al Rasid, S.Pd.",
+            "subject": [
+                {
+                    "name": "Bahasa Inggris Umum",
+                    "grade": [
+                        "X"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 25,
+            "name": "Wiwin Agustini, S.Pd.",
+            "subject": [
+                {
+                    "name": "Pendidikan Pancasila dan Kewarganegaraan",
+                    "grade": [
+                        "X",
+                        "XI"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 26,
+            "name": "Eman Suryana, SE.",
+            "subject": [
+                {
+                    "name": "Ekonomi",
+                    "grade": [
+                        "X"
+                    ]
+                },
+                {
+                    "name": "Sejarah",
+                    "grade": [
+                        "XI"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 27,
+            "name": "Lilis Halimah, ST.",
+            "subject": [
+                {
+                    "name": "Matematika Umum",
+                    "grade": [
+                        "X"
+                    ]
+                },
+                {
+                    "name": "Prakarya",
+                    "grade": [
+                        "XI",
+                        "XII"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 28,
+            "name": "Nurlaela Jahuri, S.Pd.",
+            "subject": [
+                {
+                    "name": "Bahasa Inggris Umum",
+                    "grade": [
+                        "XII"
+                    ]
+                },
+                {
+                    "name": "Bahasa Inggris Tingkat Lanjut",
+                    "grade": [
+                        "XI"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 29,
+            "name": "Amsih Sri Astuti, S.Pd., M.Si.",
+            "subject": [
+                {
+                    "name": "Biologi",
+                    "grade": [
+                        "XI",
+                        "XII"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 30,
+            "name": "Winda Amelia, S.Hum.",
+            "subject": [
+                {
+                    "name": "Bahasa Inggris Umum",
+                    "grade": [
+                        "X",
+                        "XI",
+                        "XII"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 31,
+            "name": "Dede Kurniawan, S.Pd.",
+            "subject": [
+                {
+                    "name": "Kimia",
+                    "grade": [
+                        "X"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 32,
+            "name": "Romi Pebriana, S.Pd.",
+            "subject": [
+                {
+                    "name": "Penjaskes",
+                    "grade": [
+                        "XI",
+                        "XII"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 33,
+            "name": "Oman, S.Pd.",
+            "subject": [
+                {
+                    "name": "Pendidikan Pancasila dan Kewarganegaraan",
+                    "grade": [
+                        "XII"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 34,
+            "name": "Melita Herlinda, M.Sn.",
+            "subject": [
+                {
+                    "name": "Seni Musik",
+                    "grade": [
+                        "X",
+                        "XI"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 35,
+            "name": "Noviana, S.Psi.",
+            "subject": [
+                {
+                    "name": "Bimbingan Konseling",
+                    "grade": [
+                        "XI"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 36,
+            "name": "Asheyla Nassetya, S.Pd.",
+            "subject": [
+                {
+                    "name": "Fisika",
+                    "grade": [
+                        "X",
+                        "XI"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 37,
+            "name": "Wahyu Agustriyani, S.Pd.",
+            "subject": [
+                {
+                    "name": "Bimbingan Konseling",
+                    "grade": [
+                        "X"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 38,
+            "name": "Siti Syifa Fajar Tirta Lestari, M.Pd.",
+            "subject": [
+                {
+                    "name": "Matematika Tingkat Lanjut",
+                    "grade": [
+                        "XI",
+                        "XII"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 39,
+            "name": "Nurul Nuraliyah, S. Pd.",
+            "subject": [
+                {
+                    "name": "Geografi",
+                    "grade": [
+                        "X",
+                        "XI",
+                        "XII"
+                    ]
+                }
+            ]
+        }
+    ],
+    "kelas": {
+        "10": [
+            "E1",
+            "E2",
+            "E3",
+            "E4",
+            "E5",
+            "E6",
+            "E7",
+            "E8",
+            "E9"
+        ],
+        "11": [
+            "F1",
+            "F2",
+            "F3",
+            "F4",
+            "F5",
+            "F6",
+            "F7",
+            "F8",
+            "F9"
+        ],
+        "12": [
+            "F1",
+            "F2",
+            "F3",
+            "F4",
+            "F5",
+            "F6",
+            "F7",
+            "F8"
+        ]
+    }
+}

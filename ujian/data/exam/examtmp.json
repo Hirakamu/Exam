@@ -1,0 +1,74 @@
+{
+    "form": "Biologi",
+    "kelas": "XI",
+    "semester": 1,
+    "tahun": "2025/2026",
+    "field": [
+        {
+            "id": 1,
+            "pertanyaan": "qwe",
+            "jawab": {
+                "tipe": "PG",
+                "opsi": [
+                    {
+                        "id": 1,
+                        "text": "asd"
+                    },
+                    {
+                        "id": 2,
+                        "text": "fgh"
+                    },
+                    {
+                        "id": 3,
+                        "text": "jkl"
+                    },
+                    {
+                        "id": 4,
+                        "text": "zxc"
+                    }
+                ],
+                "answer": 1,
+                "point": 1
+            }
+        },
+        {
+            "id": 2,
+            "pertanyaan": "rty",
+            "jawab": {
+                "tipe": "MCMA",
+                "opsi": [
+                    {
+                        "id": 1,
+                        "text": "asd"
+                    },
+                    {
+                        "id": 2,
+                        "text": "fgh"
+                    },
+                    {
+                        "id": 3,
+                        "text": "jkl"
+                    },
+                    {
+                        "id": 4,
+                        "text": "zxc"
+                    }
+                ],
+                "answer": [
+                    2,
+                    3
+                ],
+                "point": 2
+            }
+        },
+        {
+            "id": 3,
+            "pertanyaan": "uio",
+            "jawab":{
+                "tipe":"TF",
+                "answer": "True",
+                "point": 1
+            }
+        }
+    ]
+}

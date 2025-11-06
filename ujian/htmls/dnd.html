@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>MatWeb3 — Box Limits, Delete & Temporary Box (Persisted)</title>
+
+<script type="module">
+  import 'https://esm.run/@material/web/all.js';
+</script>
+
+<style>
+  :root{
+    --card-bg: #fff;
+    --page-bg: #f5f7fa;
+    --item-bg: #f0f2f5;
+    --accent: #1a73e8;
+    --shadow: 0 12px 34px rgba(15,23,42,0.08);
+  }
+
+  body{ font-family: "Roboto", sans-serif; background: var(--page-bg); margin: 24px; display: flex; justify-content: center; }
+
+  .app { width: 1150px; }
+
+  .toolbar { display:flex; gap:12px; margin-bottom:12px; align-items:center; }
+  button#createBox { background: var(--accent); color: white; border: none; padding: 10px 14px; border-radius: 10px; cursor: pointer; box-shadow: 0 6px 18px rgba(26,115,232,0.16); font-weight:500; }
+  button#clearSaved { background: transparent; border: 1px solid rgba(0,0,0,0.08); padding: 9px 12px; border-radius: 8px; cursor: pointer; }
+
+  .hint { color:#5f6368; font-size:0.9rem; }
+
+  .canvas { min-height: 520px; border-radius: 12px; padding: 18px; background: rgba(255,255,255,0.02); display: flex; gap:18px; flex-wrap:wrap; }
+
+  .box { width: 300px; min-height: 160px; background: var(--card-bg); border-radius: 12px; padding: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); display: flex; flex-direction: column; gap: 10px; transition: transform 220ms cubic-bezier(.2,.8,.2,1), box-shadow 220ms; position: relative; }
+  .box h3 { margin: 0; font-size: 0.95rem; font-weight: 500; color: #202124; display:flex; justify-content:space-between; align-items:center; gap:8px; }
+  .box .actions { display:flex; gap:6px; align-items:center; }
+
+  .box.active { transform: translateY(-6px) scale(1.02); box-shadow: var(--shadow); }
+  .box.shrink { transform: scale(0.985); opacity: 0.95; }
+
+  .limitBadge { font-size:0.8rem; color:#1a73e8; padding:4px 6px; border-radius:8px; border:1px solid rgba(26,115,232,0.12); background: rgba(26,115,232,0.03); display:inline-flex; gap:6px; align-items:center; }
+  .limitBadge { cursor: pointer; }
+  .limitBadge:focus-visible { outline: 3px solid rgba(26,115,232,0.16); }
+  .limitBadge.full { color: #b00020; border-color: rgba(176,0,32,0.14); background: rgba(176,0,32,0.04); }
+
+  /* Temporary box visual polish */
+  .box[data-temp="true"] { background: linear-gradient(180deg, rgba(255,250,240,0.8), rgba(255,255,255,0.6)); border: 1px dashed rgba(0,0,0,0.06); }
+  .box[data-temp="true"] .title::after { content: ' \2014 Temporary'; font-size:0.75rem; color:#9a7a2a; margin-left:8px; font-weight:400; }
+
+  .pulse {
+    animation: pulseErr 420ms ease;
+  }
+  @keyframes pulseErr { 0%{ transform: translateY(0);} 30%{ transform: translateY(-6px); } 100%{ transform: translateY(0); } }
+
+  md-filled-list{ display:flex; flex-direction:column; gap:8px; min-height: 30px; }
+
+  md-filled-list-item.draggable{ background: var(--item-bg); border-radius: 8px; padding: 10px 12px; cursor: grab; user-select: none; transition: transform 200ms ease, box-shadow 200ms ease, opacity 150ms ease; display:block; }
+  md-filled-list-item.draggable[contenteditable="true"]{ outline: 2px dashed rgba(26,115,232,0.12); background: #fff; }
+  md-filled-list-item.dragging{ opacity: 0.95; transform: scale(1.05); box-shadow: 0 12px 30px rgba(15,23,42,0.22); cursor: grabbing; }
+  md-filled-list-item.dropped { animation: dropPulse 360ms cubic-bezier(.2,.8,.2,1); }
+  @keyframes dropPulse { 0%{ transform: translateY(-8px) scale(1.02);} 60%{ transform: translateY(4px) scale(.995);} 100%{ transform: translateY(0) scale(1);} }
+
+  .small { font-size:0.8rem; color:#757575; }
+  .meta { font-size:0.85rem; color:#616161; }
+
+  .deleteBtn { color: #d23f3f; border: 1px solid rgba(210,63,63,0.08); background: transparent; padding:6px 8px; border-radius:8px; cursor:pointer; }
+</style>
+</head>
+<body>
+  <div class="app">
+    <div class="toolbar">
+      <button id="createBox">+ Create Box</button>
+      <button id="clearSaved" title="Clear saved layout">Clear saved state</button>
+      <div class="hint">Canvas starts empty. Create boxes and items. Each box has a capacity limit. Deleting a non-empty box moves its items into a temporary box.</div>
+    </div>
+
+    <div class="canvas" id="canvas" tabindex="0" aria-label="Canvas area (drop boxes here)"></div>
+  </div>
+
+<script>
+/* Persistent Canvas demo with:
+   - box capacity (limit), editable per box
+   - delete box (moves items to temporary box if non-empty)
+   - temporary box auto-created / auto-removed
+   - persistent state (localStorage)
+   - selection of individual items, rename, multi-item drag
+   - camelCase variables per preference
+*/
+
+const STORAGE_KEY = 'matweb3_canvas_state_v2';
+const canvas = document.getElementById('canvas');
+const createBoxBtn = document.getElementById('createBox');
+const clearSavedBtn = document.getElementById('clearSaved');
+
+let selectedSet = new Set();
+let lastSelectedIndex = null;
+let isDraggingItems = false;
+let currentDraggingIds = [];
+let idCounter = 1;
+let saveTimeout = null;
+const DEFAULT_LIMIT = 5; // default capacity per box
+
+// --- id helper
+function makeId(prefix='id') {
+  return `${prefix}-${Date.now().toString(36)}-${(idCounter++).toString(36)}`;
+}
+
+// --- Persistence
+function saveState() {
+  const boxEls = Array.from(canvas.querySelectorAll('.box'));
+  const boxesState = boxEls.map(box => {
+    const titleSpan = box.querySelector('.title');
+    const items = Array.from(box.querySelectorAll('md-filled-list-item.draggable')).map(it => ({ id: it.id, text: it.textContent }));
+    const limit = Number(box.dataset.limit || DEFAULT_LIMIT);
+    const isTemp = box.dataset.temp === 'true';
+    return { id: box.id, title: titleSpan ? titleSpan.textContent : 'Box', limit, isTemp, items };
+  });
+  const state = { timestamp: Date.now(), boxes: boxesState };
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (err) { console.warn('Could not save', err); }
+}
+function scheduleSave(delay = 300) { if (saveTimeout) clearTimeout(saveTimeout); saveTimeout = setTimeout(()=> { saveState(); saveTimeout = null; }, delay); }
+function loadState() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (!raw) return false;
+  try {
+    const state = JSON.parse(raw);
+    if (!state || !Array.isArray(state.boxes)) return false;
+    canvas.innerHTML = '';
+    state.boxes.forEach(b => createBoxFromState(b));
+    initContainerHandlersForAll();
+    initItemInteractionsSafe();
+    return true;
+  } catch (err) { console.warn('Failed to load', err); return false; }
+}
+function clearSavedState() { localStorage.removeItem(STORAGE_KEY); }
+
+// --- UI builders / helpers
+function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]); }
+function getAllItems() { return Array.from(canvas.querySelectorAll('md-filled-list-item.draggable')); }
+function indexOfItemId(id) { return getAllItems().findIndex(i => i.id === id); }
+
+// create box from saved state
+function createBoxFromState(boxState) {
+  const boxId = boxState.id || makeId('box');
+  const box = document.createElement('section');
+  box.className = 'box';
+  box.id = boxId;
+  box.dataset.limit = Number(boxState.limit || DEFAULT_LIMIT);
+  if (boxState.isTemp) box.dataset.temp = 'true';
+
+  box.innerHTML = `
+    <h3>
+      <span class="title">${escapeHtml(boxState.title || 'Box')}</span>
+      <span class="actions">
+  <span class="limitBadge limitBadgeSpan" role="button" tabindex="0" title="Change limit">Limit: ${box.dataset.limit}</span>
+        <button class="btn-small addItem">+ item</button>
+        <button class="btn-small renameBox">✎</button>
+        <button class="deleteBtn" title="Delete box">🗑</button>
+      </span>
+    </h3>
+    <md-filled-list></md-filled-list>
+  `;
+
+  const list = box.querySelector('md-filled-list');
+  (boxState.items || []).forEach(it => {
+    const el = document.createElement('md-filled-list-item');
+    el.className = 'draggable';
+    el.draggable = true;
+    el.id = it.id || makeId('item');
+    el.textContent = it.text || '';
+    list.appendChild(el);
+  });
+
+  canvas.appendChild(box);
+  bindBoxControls(box);
+  initContainerHandlers(box);
+  initItemInteractions();
+  return box;
+}
+
+// create empty box (default no items)
+function createBox(title) {
+  const boxId = makeId('box');
+  const box = document.createElement('section');
+  box.className = 'box';
+  box.id = boxId;
+  box.dataset.limit = DEFAULT_LIMIT;
+
+  box.innerHTML = `
+    <h3>
+      <span class="title">${escapeHtml(title || 'New Box')}</span>
+      <span class="actions">
+  <span class="limitBadge limitBadgeSpan" role="button" tabindex="0" title="Change limit">Limit: ${box.dataset.limit}</span>
+        <button class="btn-small addItem">+ item</button>
+        <button class="btn-small renameBox">✎</button>
+        <button class="deleteBtn" title="Delete box">🗑</button>
+      </span>
+    </h3>
+    <md-filled-list></md-filled-list>
+  `;
+
+  canvas.appendChild(box);
+  bindBoxControls(box);
+  initContainerHandlers(box);
+  initItemInteractions();
+  scheduleSave();
+  return box;
+}
+
+function bindBoxControls(box) {
+  // add item
+  box.querySelector('.addItem').addEventListener('click', () => {
+    // capacity check
+    const limit = Number(box.dataset.limit || DEFAULT_LIMIT);
+    const list = box.querySelector('md-filled-list');
+    const curr = list.querySelectorAll('md-filled-list-item.draggable').length;
+    if (curr >= limit) {
+      // pulse error
+      box.classList.add('pulse');
+      setTimeout(()=> box.classList.remove('pulse'), 420);
+      return;
+    }
+    addItemToBox(box, '');
+    scheduleSave();
+  });
+
+  // rename box title
+  box.querySelector('.renameBox').addEventListener('click', () => {
+    const titleEl = box.querySelector('.title');
+    inlineEdit(titleEl, (newText) => { scheduleSave(); });
+  });
+
+  // change limit (clicking the badge text opens the prompt)
+  (function(){
+    const badgeEl = box.querySelector('.limitBadge');
+    if (!badgeEl) return;
+    function openLimitPrompt(){
+      const prev = Number(box.dataset.limit || DEFAULT_LIMIT);
+      const input = prompt('Set capacity limit for this box (positive integer)', String(prev));
+      if (input === null) return;
+      const v = Math.max(1, Math.floor(Number(input) || DEFAULT_LIMIT));
+      box.dataset.limit = v;
+      const badge = box.querySelector('.limitBadgeSpan');
+      if (badge) badge.textContent = `Limit: ${v}`;
+      scheduleSave();
+      // if box currently exceeds new limit, overflow to temp box
+      const list = box.querySelector('md-filled-list');
+      const items = Array.from(list.querySelectorAll('md-filled-list-item.draggable'));
+      if (items.length > v) {
+        const overflow = items.slice(v);
+        const tempBox = getOrCreateTempBox();
+        const tempList = tempBox.querySelector('md-filled-list');
+        overflow.forEach(it => tempList.appendChild(it));
+        scheduleSave();
+        flashBox(tempBox);
+      }
+    }
+    badgeEl.addEventListener('click', openLimitPrompt);
+    badgeEl.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLimitPrompt(); } });
+  })();
+
+  // delete box
+  box.querySelector('.deleteBtn').addEventListener('click', () => {
+    const list = box.querySelector('md-filled-list');
+    const items = Array.from(list.querySelectorAll('md-filled-list-item.draggable'));
+    if (items.length === 0) {
+      // safe delete
+      box.remove();
+      scheduleSave();
+      cleanupTempBoxIfEmpty();
+      return;
+    }
+    // move items to temp box
+    const tempBox = getOrCreateTempBox();
+    const tempList = tempBox.querySelector('md-filled-list');
+    items.forEach(it => tempList.appendChild(it));
+    box.remove();
+    scheduleSave();
+    flashBox(tempBox);
+    cleanupTempBoxIfEmpty(); // in case something immediate triggers removal (unlikely)
+  });
+}
+
+function flashBox(box) {
+  if (!box) return;
+  box.classList.add('active');
+  setTimeout(()=> box.classList.remove('active'), 420);
+}
+
+function addItemToBox(box, text) {
+  const list = box.querySelector('md-filled-list');
+  const itemId = makeId('item');
+  const el = document.createElement('md-filled-list-item');
+  el.className = 'draggable';
+  el.draggable = true;
+  el.id = itemId;
+  el.textContent = text || randomMessyString();
+  list.appendChild(el);
+  initItemInteractions();
+  scheduleSave();
+  inlineEdit(el, (newText)=> { scheduleSave(); });
+}
+
+// ---- Temporary box helpers ----
+function getOrCreateTempBox() {
+  let tempBox = canvas.querySelector('.box[data-temp="true"]');
+  if (tempBox) return tempBox;
+  tempBox = createBox('Temporary');
+  tempBox.dataset.temp = 'true';
+  tempBox.dataset.limit = 9999; // effectively unlimited
+  const badge = tempBox.querySelector('.limitBadgeSpan');
+  if (badge) badge.textContent = 'Temporary';
+  // prevent user from deleting the temporary box via UI? allow delete though.
+  scheduleSave();
+  return tempBox;
+}
+function cleanupTempBoxIfEmpty() {
+  const tempBox = canvas.querySelector('.box[data-temp="true"]');
+  if (!tempBox) return;
+  const list = tempBox.querySelector('md-filled-list');
+  const items = list.querySelectorAll('md-filled-list-item.draggable');
+  if (items.length === 0) {
+    tempBox.remove();
+    scheduleSave();
+  }
+}
+
+// ---- inline edit helper ----
+function inlineEdit(el, onSave) {
+  if (!el) return;
+  el.contentEditable = 'true';
+  el.focus();
+  document.execCommand('selectAll', false, null);
+  function finish() {
+    el.contentEditable = 'false';
+    onSave && onSave(el.textContent.trim());
+    el.removeEventListener('blur', finish);
+    el.removeEventListener('keydown', onKey);
+    scheduleSave();
+  }
+  function onKey(e){
+    if (e.key === 'Enter') { e.preventDefault(); el.blur(); }
+    else if (e.key === 'Escape') { el.blur(); }
+  }
+  el.addEventListener('blur', finish);
+  el.addEventListener('keydown', onKey);
+}
+
+// ---- selection logic (items) ----
+function clearSelection() {
+  selectedSet.clear();
+  getAllItems().forEach(i => i.classList.remove('selected'));
+  lastSelectedIndex = null;
+}
+function toggleSelectItemByEl(el) {
+  if (!el) return;
+  const id = el.id;
+  if (selectedSet.has(id)) { selectedSet.delete(id); el.classList.remove('selected'); }
+  else { selectedSet.add(id); el.classList.add('selected'); }
+  lastSelectedIndex = indexOfItemId(id);
+}
+function singleSelectItemByEl(el) {
+  clearSelection();
+  selectedSet.add(el.id);
+  el.classList.add('selected');
+  lastSelectedIndex = indexOfItemId(el.id);
+}
+function rangeSelectToEl(el) {
+  const items = getAllItems();
+  if (lastSelectedIndex == null) { singleSelectItemByEl(el); return; }
+  const targetIdx = indexOfItemId(el.id);
+  const start = Math.min(lastSelectedIndex, targetIdx);
+  const end = Math.max(lastSelectedIndex, targetIdx);
+  selectedSet.clear();
+  for (let i=start;i<=end;i++) selectedSet.add(items[i].id);
+  items.forEach(it => it.classList.toggle('selected', selectedSet.has(it.id)));
+  lastSelectedIndex = targetIdx;
+}
+
+// ---- drag & drop multi-item ----
+function initItemInteractions() {
+  const items = getAllItems();
+  items.forEach(item => {
+    if (item._bound) return;
+    item._bound = true;
+
+    item.addEventListener('click', (e) => {
+      if (item.contentEditable === 'true') return;
+      const isMod = e.ctrlKey || e.metaKey;
+      const isShift = e.shiftKey;
+      if (isShift) rangeSelectToEl(item);
+      else if (isMod) toggleSelectItemByEl(item);
+      else singleSelectItemByEl(item);
+    });
+
+    item.addEventListener('dblclick', (e) => {
+      inlineEdit(item, (newText) => { scheduleSave(); });
+    });
+
+    item.addEventListener('dragstart', (e) => {
+      isDraggingItems = true;
+      const id = item.id;
+      if (selectedSet.has(id)) currentDraggingIds = Array.from(selectedSet);
+      else { selectedSet.clear(); selectedSet.add(id); getAllItems().forEach(i => i.classList.toggle('selected', selectedSet.has(i.id))); currentDraggingIds = [id]; }
+
+      // drag image
+      try {
+        const ghost = document.createElement('div');
+        ghost.style.padding = '8px 12px'; ghost.style.borderRadius = '8px'; ghost.style.background = '#fff'; ghost.style.boxShadow = '0 10px 30px rgba(0,0,0,0.12)'; ghost.style.fontFamily = 'Roboto, sans-serif';
+        ghost.textContent = currentDraggingIds.length > 1 ? `${currentDraggingIds.length} items` : (item.textContent || 'item');
+        ghost.style.position='absolute'; ghost.style.left='-9999px';
+        document.body.appendChild(ghost);
+        e.dataTransfer.setDragImage(ghost, 10, 10);
+        setTimeout(()=> document.body.removeChild(ghost), 50);
+      } catch(_) {}
+
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/plain', JSON.stringify(currentDraggingIds));
+      getAllItems().forEach(i => i.classList.toggle('dragging', currentDraggingIds.includes(i.id)));
+    });
+
+    item.addEventListener('dragend', (e) => {
+      isDraggingItems = false;
+      currentDraggingIds = [];
+      getAllItems().forEach(i => i.classList.remove('dragging'));
+      scheduleSave();
+      cleanupTempBoxIfEmpty();
+    });
+
+    item.addEventListener('animationend', (ev) => {
+      if (ev.animationName === 'dropPulse') item.classList.remove('dropped');
+    });
+  });
+}
+
+// ---- container handlers (per-box) ----
+function initContainerHandlers(box) {
+  const list = box.querySelector('md-filled-list');
+
+  function getDragAfterElement(container, y) {
+    const draggableElements = Array.from(container.querySelectorAll('md-filled-list-item.draggable:not(.dragging)'));
+    return draggableElements.reduce((closest, child) => {
+      const boxRect = child.getBoundingClientRect();
+      const offset = y - boxRect.top - boxRect.height / 2;
+      if (offset < 0 && offset > closest.offset) return { offset, element: child };
+      return closest;
+    }, { offset: Number.NEGATIVE_INFINITY }).element;
+  }
+
+  box.addEventListener('dragenter', (e) => {
+    if (!isDraggingItems) return;
+    e.preventDefault();
+    box.classList.add('active');
+  });
+
+  box.addEventListener('dragover', (e) => {
+    if (!isDraggingItems) return;
+    e.preventDefault();
+    let payload = null;
+    try { payload = JSON.parse(e.dataTransfer.getData('text/plain')); } catch(_) { payload = null; }
+    const draggingIds = Array.isArray(payload) ? payload : (currentDraggingIds.length ? currentDraggingIds : (payload ? [payload] : []));
+    if (!draggingIds.length) return;
+    const firstId = draggingIds[0];
+    const draggedEl = document.getElementById(firstId);
+    const afterEl = getDragAfterElement(list, e.clientY);
+    if (draggedEl) {
+      if (afterEl == null) list.appendChild(draggedEl);
+      else list.insertBefore(draggedEl, afterEl);
+    }
+  });
+
+  box.addEventListener('dragleave', (e) => {
+    const rect = box.getBoundingClientRect();
+    if (e.clientX < rect.left || e.clientX > rect.right || e.clientY < rect.top || e.clientY > rect.bottom) {
+      box.classList.remove('active');
+    }
+  });
+
+  box.addEventListener('drop', (e) => {
+    if (!isDraggingItems) return;
+    e.preventDefault();
+    box.classList.remove('active');
+
+    // determine dragging ids
+    let payload = null;
+    try { payload = JSON.parse(e.dataTransfer.getData('text/plain')); } catch(_) { payload = null; }
+    const draggingIds = Array.isArray(payload) ? payload : (currentDraggingIds.length ? currentDraggingIds : (payload ? [payload] : []));
+    if (!draggingIds.length) return;
+
+    // insertion point
+    const listEl = box.querySelector('md-filled-list');
+    const afterEl = (function(){
+      const elements = Array.from(listEl.querySelectorAll('md-filled-list-item.draggable:not(.dragging)'));
+      return elements.reduce((closest, child) => {
+        const b = child.getBoundingClientRect();
+        const offset = e.clientY - b.top - b.height/2;
+        if (offset < 0 && offset > closest.offset) return { offset, element: child };
+        return closest;
+      }, { offset: Number.NEGATIVE_INFINITY }).element;
+    })();
+
+    // preserve order: use global item order to derive relative order of dragging ids
+    const allItemsBefore = getAllItems().map(el => el.id);
+    const orderedDragging = allItemsBefore.filter(id => draggingIds.includes(id));
+
+    // capacity handling
+    const limit = Number(box.dataset.limit || DEFAULT_LIMIT);
+    const existingCount = listEl.querySelectorAll('md-filled-list-item.draggable').length;
+    const allowed = Math.max(0, limit - existingCount);
+
+    // move allowed items first to this box
+    const allowedSet = orderedDragging.slice(0, allowed);
+    const overflow = orderedDragging.slice(allowed);
+
+    allowedSet.forEach(dId => {
+      const dEl = document.getElementById(dId);
+      if (!dEl) return;
+      if (afterEl == null) listEl.appendChild(dEl);
+      else listEl.insertBefore(dEl, afterEl);
+    });
+
+    // overflow goes to temp box
+    if (overflow.length > 0) {
+      const tempBox = getOrCreateTempBox();
+      const tempList = tempBox.querySelector('md-filled-list');
+      overflow.forEach(dId => {
+        const dEl = document.getElementById(dId);
+        if (!dEl) return;
+        tempList.appendChild(dEl);
+      });
+      flashBox(tempBox);
+    }
+
+    // visuals and selection keep
+    orderedDragging.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.classList.remove('dragging');
+        el.classList.add('dropped');
+        selectedSet.add(id);
+        el.classList.toggle('selected', selectedSet.has(id));
+      }
+    });
+
+    // cleanup
+    isDraggingItems = false;
+    currentDraggingIds = [];
+    scheduleSave();
+    cleanupTempBoxIfEmpty();
+  });
+}
+
+// ---- Init helpers ----
+function initContainerHandlersForAll() {
+  const boxes = Array.from(canvas.querySelectorAll('.box'));
+  boxes.forEach(box => { if (!box._handlersAttached) { initContainerHandlers(box); box._handlersAttached = true; }});
+}
+function initItemInteractionsSafe() { initContainerHandlersForAll(); initItemInteractions(); }
+
+// ---- Buttons ----
+createBoxBtn.addEventListener('click', () => {
+  const count = canvas.querySelectorAll('.box').length + 1;
+  createBox('Box ' + count);
+});
+clearSavedBtn.addEventListener('click', () => {
+  if (!confirm('Clear saved canvas in browser? This removes saved layout from localStorage.')) return;
+  clearSavedState();
+  alert('Saved state cleared. Reload to start fresh.');
+});
+
+// ---- Startup ----
+(function startup() {
+  const ok = loadState();
+  if (!ok) { canvas.innerHTML = ''; } // start empty by request
+  initContainerHandlersForAll();
+  initItemInteractionsSafe();
+  window.addEventListener('beforeunload', () => { saveState(); });
+})();
+
+// expose helpers
+window.saveCanvasNow = saveState;
+window.getSelectedItemIds = () => Array.from(selectedSet);
+
+// --- small utils ---
+function randomMessyString(){
+  const samples = [
+    'user: ' + randomName(),
+    'token: ' + Math.random().toString(36).slice(2,9),
+    'msg: ' + ['ok','retry','queued','alpha'][Math.floor(Math.random()*4)],
+    'ref: #' + Math.floor(Math.random()*9000+100),
+    'note: ' + ['call', 'deploy', 'test', 'fix'][Math.floor(Math.random()*4)],
+    'val: ' + (Math.random()*100).toFixed(2)
+  ];
+  return samples[Math.floor(Math.random()*samples.length)];
+}
+function randomName(){ return ['alice','bob','carol','dave','eve'][Math.floor(Math.random()*5)] + '_' + Math.floor(Math.random()*99); }
+
+</script>
+</body>
+</html>

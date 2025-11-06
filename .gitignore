@@ -1,0 +1,14 @@
+# venv
+venv
+.venv
+
+# user data
+*.log
+*.sqlite3
+*.env
+*.pyc
+__pycache__/
+
+# user specfic data
+ujian/data/exam/safeexam
+ujian/data/exam/teacher
