@@ -1,0 +1,1366 @@
+{
+    "formId": "1il--mc2AvnFNU6aBKIbMQLc4yOm3Sxc_zV9dk9lEzWM",
+    "info": {
+        "description": "kelompok 2 XI F2\n1. Angel\n2. \u2060Anisa\n3. \u2060Aqiela\n4. \u2060Kheisya\n5. \u2060Madina\n6. \u2060Zahra\n7. \u2060Danish\n8. Matthew\n9. Nissi\n10. Irsyad",
+        "documentTitle": "punya icatsadfsf"
+    },
+    "settings": {
+        "quizSettings": {
+            "isQuiz": true
+        },
+        "emailCollectionType": "DO_NOT_COLLECT"
+    },
+    "revisionId": "00000089",
+    "responderUri": "https://docs.google.com/forms/d/e/1FAIpQLScadKyawtW5jnJC3NwpFLnQfOLp5INZMC5khdngGOuAyhMPJg/viewform",
+    "items": [
+        {
+            "itemId": "611bb48b",
+            "title": "Pilih Nama",
+            "questionItem": {
+                "question": {
+                    "questionId": "1f4900d4",
+                    "required": true,
+                    "choiceQuestion": {
+                        "type": "DROP_DOWN",
+                        "options": [
+                            {
+                                "value": "Angel"
+                            },
+                            {
+                                "value": "\u2060Anisa"
+                            },
+                            {
+                                "value": "\u2060Aqiela"
+                            },
+                            {
+                                "value": "\u2060Kheisya"
+                            },
+                            {
+                                "value": "\u2060Madina"
+                            },
+                            {
+                                "value": "\u2060Zahra"
+                            },
+                            {
+                                "value": "Danish"
+                            },
+                            {
+                                "value": "Matthew"
+                            },
+                            {
+                                "value": "Irsyad"
+                            },
+                            {
+                                "value": "Nissi"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "itemId": "63539738",
+            "title": "Kelas XI",
+            "questionItem": {
+                "question": {
+                    "questionId": "7d6e79cc",
+                    "required": true,
+                    "choiceQuestion": {
+                        "type": "DROP_DOWN",
+                        "options": [
+                            {
+                                "value": "F1"
+                            },
+                            {
+                                "value": "F2"
+                            },
+                            {
+                                "value": "F3"
+                            },
+                            {
+                                "value": "F4"
+                            },
+                            {
+                                "value": "F5"
+                            },
+                            {
+                                "value": "F6"
+                            },
+                            {
+                                "value": "F7"
+                            },
+                            {
+                                "value": "F8"
+                            },
+                            {
+                                "value": "F9"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "itemId": "1661bfda",
+            "pageBreakItem": {},
+            "title": "A. Pilihan Ganda Kompleks",
+            "description": "Petunjuk Pengerjaan Soal\n\nBerikan tanda (\u2713) pada pernyataan yang sesuai dengan jawaban Anda! Jawaban bisa lebih dari satu. "
+        },
+        {
+            "itemId": "46783411",
+            "questionGroupItem": {
+                "questions": [
+                    {
+                        "questionId": "48fd6f0e",
+                        "grading": {
+                            "pointValue": 5,
+                            "correctAnswers": {
+                                "answers": [
+                                    {
+                                        "value": "Benar"
+                                    }
+                                ]
+                            }
+                        },
+                        "rowQuestion": {
+                            "title": "You must believe it without saying \u201cdon't agree\u201d."
+                        }
+                    },
+                    {
+                        "questionId": "5c7d1b92",
+                        "grading": {
+                            "pointValue": 5,
+                            "correctAnswers": {
+                                "answers": [
+                                    {
+                                        "value": "Salah"
+                                    }
+                                ]
+                            }
+                        },
+                        "rowQuestion": {
+                            "title": "You check the information wheter that information is true or not."
+                        }
+                    },
+                    {
+                        "questionId": "775635ee",
+                        "grading": {
+                            "pointValue": 5,
+                            "correctAnswers": {
+                                "answers": [
+                                    {
+                                        "value": "Benar"
+                                    }
+                                ]
+                            }
+                        },
+                        "rowQuestion": {
+                            "title": "You just believe the people's argumentation if you like with the information."
+                        }
+                    },
+                    {
+                        "questionId": "51479766",
+                        "grading": {
+                            "pointValue": 5,
+                            "correctAnswers": {
+                                "answers": [
+                                    {
+                                        "value": "Salah"
+                                    }
+                                ]
+                            }
+                        },
+                        "rowQuestion": {
+                            "title": "You only belive your argumentation and think you are the most right person if you give comment about the new information or news."
+                        }
+                    },
+                    {
+                        "questionId": "2c12cc95",
+                        "grading": {
+                            "pointValue": 5,
+                            "correctAnswers": {
+                                "answers": [
+                                    {
+                                        "value": "Benar"
+                                    }
+                                ]
+                            }
+                        },
+                        "rowQuestion": {
+                            "title": "Ask the other wheter the information is true or not."
+                        }
+                    }
+                ],
+                "grid": {
+                    "columns": {
+                        "type": "RADIO",
+                        "options": [
+                            {
+                                "value": "Benar"
+                            },
+                            {
+                                "value": "Salah"
+                            }
+                        ]
+                    }
+                }
+            },
+            "title": "1. Sikap Pelajar Pancasila!\nIn this technological era, we can get new information fast. That information can be fact, narration, or argument. If you get new information which you think that it is strange or something else, what should you do?"
+        },
+        {
+            "itemId": "6f8343cd",
+            "questionGroupItem": {
+                "questions": [
+                    {
+                        "questionId": "0a151a34",
+                        "required": true,
+                        "grading": {
+                            "pointValue": 5,
+                            "correctAnswers": {
+                                "answers": [
+                                    {
+                                        "value": "Salah"
+                                    }
+                                ]
+                            }
+                        },
+                        "rowQuestion": {
+                            "title": "Yes, I get the point, but my belief is that money is more important than healthy."
+                        }
+                    },
+                    {
+                        "questionId": "40abd1aa",
+                        "required": true,
+                        "grading": {
+                            "pointValue": 5,
+                            "correctAnswers": {
+                                "answers": [
+                                    {
+                                        "value": "Benar"
+                                    }
+                                ]
+                            }
+                        },
+                        "rowQuestion": {
+                            "title": "I'm afraid I can't quite come to an agreement with your point"
+                        }
+                    },
+                    {
+                        "questionId": "41831e9e",
+                        "required": true,
+                        "grading": {
+                            "pointValue": 5,
+                            "correctAnswers": {
+                                "answers": [
+                                    {
+                                        "value": "Salah"
+                                    }
+                                ]
+                            }
+                        },
+                        "rowQuestion": {
+                            "title": "According to me you did the right thing."
+                        }
+                    },
+                    {
+                        "questionId": "166d1ff0",
+                        "required": true,
+                        "grading": {
+                            "pointValue": 5,
+                            "correctAnswers": {
+                                "answers": [
+                                    {
+                                        "value": "Benar"
+                                    }
+                                ]
+                            }
+                        },
+                        "rowQuestion": {
+                            "title": "What I mean is you have to believe it."
+                        }
+                    },
+                    {
+                        "questionId": "45435322",
+                        "required": true,
+                        "grading": {
+                            "pointValue": 5,
+                            "correctAnswers": {
+                                "answers": [
+                                    {
+                                        "value": "Salah"
+                                    }
+                                ]
+                            }
+                        },
+                        "rowQuestion": {
+                            "title": "If you don't agree with this, I follow you."
+                        }
+                    }
+                ],
+                "grid": {
+                    "columns": {
+                        "type": "RADIO",
+                        "options": [
+                            {
+                                "value": "Benar"
+                            },
+                            {
+                                "value": "Salah"
+                            }
+                        ]
+                    }
+                }
+            },
+            "title": "2. Which one is the correct statement about the expression of defending opinion?"
+        },
+        {
+            "itemId": "098ab148",
+            "questionGroupItem": {
+                "questions": [
+                    {
+                        "questionId": "15d483a2",
+                        "grading": {
+                            "pointValue": 5,
+                            "correctAnswers": {
+                                "answers": [
+                                    {
+                                        "value": "Benar"
+                                    }
+                                ]
+                            }
+                        },
+                        "rowQuestion": {
+                            "title": "Reitetation is introducing the topic and indicating the writer's point of view."
+                        }
+                    },
+                    {
+                        "questionId": "0c102db5",
+                        "grading": {
+                            "pointValue": 5,
+                            "correctAnswers": {
+                                "answers": [
+                                    {
+                                        "value": "Benar"
+                                    }
+                                ]
+                            }
+                        },
+                        "rowQuestion": {
+                            "title": "Explanation of the writer about supporting particular topic is her/his argument."
+                        }
+                    },
+                    {
+                        "questionId": "367cafa0",
+                        "grading": {
+                            "pointValue": 5,
+                            "correctAnswers": {
+                                "answers": [
+                                    {
+                                        "value": "Salah"
+                                    }
+                                ]
+                            }
+                        },
+                        "rowQuestion": {
+                            "title": "Orientation is an introduction about the content of the text."
+                        }
+                    },
+                    {
+                        "questionId": "4c1d915e",
+                        "grading": {
+                            "pointValue": 5,
+                            "correctAnswers": {
+                                "answers": [
+                                    {
+                                        "value": "Salah"
+                                    }
+                                ]
+                            }
+                        },
+                        "rowQuestion": {
+                            "title": "Reiteration is restating the writer's point of view/ to strengthen the thesis."
+                        }
+                    },
+                    {
+                        "questionId": "400cd03a",
+                        "grading": {
+                            "pointValue": 5,
+                            "correctAnswers": {
+                                "answers": [
+                                    {
+                                        "value": "Benar"
+                                    }
+                                ]
+                            }
+                        },
+                        "rowQuestion": {
+                            "title": "Topic is a particular subject that people discuss to write."
+                        }
+                    }
+                ],
+                "grid": {
+                    "columns": {
+                        "type": "RADIO",
+                        "options": [
+                            {
+                                "value": "Benar"
+                            },
+                            {
+                                "value": "Salah"
+                            }
+                        ]
+                    }
+                }
+            },
+            "title": "3. Which one is the correct statement about the definition of the words below?"
+        },
+        {
+            "itemId": "23e33462",
+            "questionGroupItem": {
+                "questions": [
+                    {
+                        "questionId": "35f78857",
+                        "grading": {
+                            "pointValue": 5,
+                            "correctAnswers": {
+                                "answers": [
+                                    {
+                                        "value": "Salah"
+                                    }
+                                ]
+                            }
+                        },
+                        "rowQuestion": {
+                            "title": "Escalate"
+                        }
+                    },
+                    {
+                        "questionId": "547f3b31",
+                        "grading": {
+                            "pointValue": 5,
+                            "correctAnswers": {
+                                "answers": [
+                                    {
+                                        "value": "Salah"
+                                    }
+                                ]
+                            }
+                        },
+                        "rowQuestion": {
+                            "title": "Consuption"
+                        }
+                    },
+                    {
+                        "questionId": "6ccd1faf",
+                        "grading": {
+                            "pointValue": 5,
+                            "correctAnswers": {
+                                "answers": [
+                                    {
+                                        "value": "Salah"
+                                    }
+                                ]
+                            }
+                        },
+                        "rowQuestion": {
+                            "title": "Ingestion"
+                        }
+                    },
+                    {
+                        "questionId": "44796f95",
+                        "grading": {
+                            "pointValue": 5,
+                            "correctAnswers": {
+                                "answers": [
+                                    {
+                                        "value": "Benar"
+                                    }
+                                ]
+                            }
+                        },
+                        "rowQuestion": {
+                            "title": "Update"
+                        }
+                    },
+                    {
+                        "questionId": "573166fc",
+                        "grading": {
+                            "pointValue": 5,
+                            "correctAnswers": {
+                                "answers": [
+                                    {
+                                        "value": "Benar"
+                                    }
+                                ]
+                            }
+                        },
+                        "rowQuestion": {
+                            "title": "Enlarge"
+                        }
+                    }
+                ],
+                "grid": {
+                    "columns": {
+                        "type": "RADIO",
+                        "options": [
+                            {
+                                "value": "Benar"
+                            },
+                            {
+                                "value": "Salah"
+                            }
+                        ]
+                    }
+                }
+            },
+            "title": "4. In addition, drinking enough water helps moisture our skin.\nWhich one is the correct synonym of the underlined word above?"
+        },
+        {
+            "itemId": "6c3522d5",
+            "questionGroupItem": {
+                "questions": [
+                    {
+                        "questionId": "5e27d7e3",
+                        "grading": {
+                            "pointValue": 5,
+                            "correctAnswers": {
+                                "answers": [
+                                    {
+                                        "value": "Benar"
+                                    }
+                                ]
+                            }
+                        },
+                        "rowQuestion": {
+                            "title": "Get"
+                        }
+                    },
+                    {
+                        "questionId": "4a4a6764",
+                        "grading": {
+                            "pointValue": 5,
+                            "correctAnswers": {
+                                "answers": [
+                                    {
+                                        "value": "Salah"
+                                    }
+                                ]
+                            }
+                        },
+                        "rowQuestion": {
+                            "title": "Procure"
+                        }
+                    },
+                    {
+                        "questionId": "7f179ad6",
+                        "grading": {
+                            "pointValue": 5,
+                            "correctAnswers": {
+                                "answers": [
+                                    {
+                                        "value": "Benar"
+                                    }
+                                ]
+                            }
+                        },
+                        "rowQuestion": {
+                            "title": "Lose"
+                        }
+                    },
+                    {
+                        "questionId": "34135f09",
+                        "grading": {
+                            "pointValue": 5,
+                            "correctAnswers": {
+                                "answers": [
+                                    {
+                                        "value": "Benar"
+                                    }
+                                ]
+                            }
+                        },
+                        "rowQuestion": {
+                            "title": "Loss"
+                        }
+                    },
+                    {
+                        "questionId": "23d817ae",
+                        "grading": {
+                            "pointValue": 5,
+                            "correctAnswers": {
+                                "answers": [
+                                    {
+                                        "value": "Benar"
+                                    }
+                                ]
+                            }
+                        },
+                        "rowQuestion": {
+                            "title": "Obtain"
+                        }
+                    }
+                ],
+                "grid": {
+                    "columns": {
+                        "type": "RADIO",
+                        "options": [
+                            {
+                                "value": "Benar"
+                            },
+                            {
+                                "value": "Salah"
+                            }
+                        ]
+                    }
+                }
+            },
+            "title": "5. Weight gain and obesity especially childhood obesity.\nWhich one is the correct antonym of the underlined word above?"
+        },
+        {
+            "itemId": "4388ce33",
+            "pageBreakItem": {},
+            "title": "B. Pilihan Ganda",
+            "description": "Jika jenis soal pilihan ganda,berilah tanda (x) huruf A, B, C, D, atau E pada jawaban yang benar.\n"
+        },
+        {
+            "itemId": "396d74e1",
+            "imageItem": {
+                "image": {
+                    "contentUri": "https://lh7-rt.googleusercontent.com/formsz/AN7BsVBhpmTN2eH0WyqYdMqZd2-gs0pfg-GUgcqkChuxqV_5m9dbfJdT4VAZJtP0FlfF-S_rvN0MgY4rXHfxqSW2E7NUVf313To9Q3P2W8_T82CQFZChpynAOig54EYIfUqYjFbCXe9NR6NMYI6XiuROC14Ffw?key=O5-f8X-Ffw_fmfenM80EUQ",
+                    "properties": {
+                        "alignment": "LEFT",
+                        "width": 261
+                    }
+                }
+            },
+            "title": "The following text is for questions 6 to 9!\nUse of Formalin and Other Additives in Foods\nThe use of formalin and other dangerous preservatives in food has been serious problem for three reasons. Firstly, formalin in not for human beings, but it is for biological speciments and experiments. Formalin in Biology is a 10% solution of formaldehyde in water which is ususally used as a disinfectant or to preserve biological speciments. Thus, it is not for food preservatives. Of course when i tis used for food preservative, it will be very dangerous to human's body. The second reason is that there is No. tight control from the government.\nThis condition makes the people's health is really in a threat. When teh control is weak and the use formalin was spread wide all over the Indonesian regions, and these days it has really happened, the citizen's bodies will be badly Picture 3.5 Formalin.contaminated with the poisons. Fish or food traders still sell\ntheir products which contain formalin and dangerous preservatives. Can you imagine that our digestive system absorbs the substance that should be for the human and animal corpses?\nConsidering the reasons, we can make a conclusion that the use of formalin and other preservatives is really a serious problem i fit is not resolved immediately.\nSource: www.idr.uin-antasari.ac.id"
+        },
+        {
+            "itemId": "1fa3c9d7",
+            "title": "6. Why is formalin dangerous for a human's body?",
+            "questionItem": {
+                "question": {
+                    "questionId": "0ffaf171",
+                    "grading": {
+                        "pointValue": 5,
+                        "correctAnswers": {
+                            "answers": [
+                                {
+                                    "value": "c. It is used top reserve biological specimens."
+                                }
+                            ]
+                        }
+                    },
+                    "choiceQuestion": {
+                        "type": "RADIO",
+                        "options": [
+                            {
+                                "value": "a. It is not a food preservative."
+                            },
+                            {
+                                "value": "b. It is a disinfectant for human beings."
+                            },
+                            {
+                                "value": "c. It is used top reserve biological specimens."
+                            },
+                            {
+                                "value": "d. It is a 10% solution of formaldehyde in water."
+                            },
+                            {
+                                "value": "e. I tis controlled flighty from the government."
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "itemId": "399f2f92",
+            "title": "7. The main idea of paragraph 2 is...",
+            "questionItem": {
+                "question": {
+                    "questionId": "55a0d011",
+                    "required": true,
+                    "grading": {
+                        "pointValue": 5,
+                        "correctAnswers": {
+                            "answers": [
+                                {
+                                    "value": "d. the human's body will be harmfu after consuming the formalin"
+                                }
+                            ]
+                        }
+                    },
+                    "choiceQuestion": {
+                        "type": "RADIO",
+                        "options": [
+                            {
+                                "value": "a. the human's bodies will be harmful after consuming the formalin"
+                            },
+                            {
+                                "value": "b. the government has not controlled the use of formalin firmly"
+                            },
+                            {
+                                "value": "c. the weak control of using formalin is not threatening the human"
+                            },
+                            {
+                                "value": "d. the human's body will be harmfu after consuming the formalin"
+                            },
+                            {
+                                "value": "e. the use of formalin is known all over the regions"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "itemId": "2631664f",
+            "title": "8.  \u201cThis condition makes the people's health is really in a threat.Which word has similar meaning to the underlined word?",
+            "questionItem": {
+                "question": {
+                    "questionId": "15d6f8f3",
+                    "grading": {
+                        "pointValue": 5,
+                        "correctAnswers": {
+                            "answers": [
+                                {
+                                    "value": "c. appointmen"
+                                }
+                            ]
+                        }
+                    },
+                    "choiceQuestion": {
+                        "type": "RADIO",
+                        "options": [
+                            {
+                                "value": "a. expert"
+                            },
+                            {
+                                "value": "b. circumstance"
+                            },
+                            {
+                                "value": "c. appointmen"
+                            },
+                            {
+                                "value": "d. erroneous"
+                            },
+                            {
+                                "value": "e. professional"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "itemId": "7815abb9",
+            "title": "9. Can you imagine that our digestive...\nThe underlined word has synonym with,except...",
+            "questionItem": {
+                "question": {
+                    "questionId": "3ce96a9f",
+                    "grading": {
+                        "pointValue": 5,
+                        "correctAnswers": {
+                            "answers": [
+                                {
+                                    "value": "d. visualize"
+                                }
+                            ]
+                        }
+                    },
+                    "choiceQuestion": {
+                        "type": "RADIO",
+                        "options": [
+                            {
+                                "value": "a. visualize"
+                            },
+                            {
+                                "value": "b. visualize"
+                            },
+                            {
+                                "value": "c. visualize"
+                            },
+                            {
+                                "value": "d. visualize"
+                            },
+                            {
+                                "value": "e. substantive"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "itemId": "7107f493",
+            "title": "The following text is for questions 10 and 11!\nOrganic food is food produced naturally, without chemical substances. People tend to consume organic food because it is superior compared to non organic one.\nOrganic food ide healthier because they are free of chemical substances which harm our healthiness. I tis also more nutritious than non organic food. The nutrition remains in the food because it is free from chemical substances that can decrease nutrition. Moreover, organic farming using organic fertilizer to mature plants is friendly for the environment and maintains soil fertile.\nOrganic food is quality because it is healthier and more nutritiou. Organic farming is friendly for environment too. \nSource:Adapted from www.idr.uin-antasari.ac.id\n10. What is organic food?",
+            "questionItem": {
+                "question": {
+                    "questionId": "32026c2d",
+                    "grading": {
+                        "pointValue": 5,
+                        "correctAnswers": {
+                            "answers": [
+                                {
+                                    "value": "b. Food that maintains nutrition."
+                                }
+                            ]
+                        }
+                    },
+                    "choiceQuestion": {
+                        "type": "RADIO",
+                        "options": [
+                            {
+                                "value": "a. Food processed traditionally."
+                            },
+                            {
+                                "value": "b. Food that maintains nutrition."
+                            },
+                            {
+                                "value": "c. Food processed in a modern way."
+                            },
+                            {
+                                "value": "d. Food containing chemicaI substances."
+                            },
+                            {
+                                "value": "e. Food produced without chemical substances."
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "itemId": "4fe35057",
+            "title": "11. Why should people consume organic food?",
+            "questionItem": {
+                "question": {
+                    "questionId": "680c31db",
+                    "grading": {
+                        "pointValue": 5,
+                        "correctAnswers": {
+                            "answers": [
+                                {
+                                    "value": "e. It contains substances which warm health."
+                                }
+                            ]
+                        }
+                    },
+                    "choiceQuestion": {
+                        "type": "RADIO",
+                        "options": [
+                            {
+                                "value": "a. It is easily cultivated."
+                            },
+                            {
+                                "value": "b. It uses chemical fertilizer."
+                            },
+                            {
+                                "value": "c. It is sold at affordable prices."
+                            },
+                            {
+                                "value": "d. It is healthier and more nutritious."
+                            },
+                            {
+                                "value": "e. It contains substances which warm health."
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "itemId": "4f135f27",
+            "title": "The following text is for questions 12 to 15!\nRecycling is a simply process of converting the waste materials into the new materials and also objects. To do this, recycling often requires both machinery andemployees to correctly sort recyclable items based on the material they're made of. This includes paper, plastic, glass, metal, and more. I tis very importance to do this to keep the natural resources and for the future generations.Here some reasons why we should do recycling.\nWhen we recycle,we lessen disruption to the natural world. When we cut down fewver trees and forests, we are preventing harm to animals. By reducing disruption and damage to the natural world,we help preserve ecosystems and wildlife.\nSome of the world's natural resources are in short supply, and when we recycle, we help conserve these natural resources. When we recycle paper, we save forests and trees. When we recycle plastic,it takes up a lot of solid waste and can take centuries to break down. In addition to this,most plastic comes from fossil fuel hydrocarbons. Recycling metals reduces the need to extract new metal ore while recycling glass reduces our need for certain raw materials like sand.\nMaking products from recycled materials requires less energy than making them from new,raw materials. It takes much less energy to make products out of recycled materials than from raw materials. For example, recycling one glass bottle saves enough power to light a 100-watt light bulb for four hours.\nWhen we recycle, it reduces our need to harvest raw materials. Our increasing demand for these raw materials also displaces people who live near forests or around river systems. When we recycle,we reduce the possibility of damaging someone else's land or community.\nRecycling takes up less energy, which reduces our carbon footprint and emissions. Reducing our carbon footprint helps minimize methane-release waste from landfill sites, which contributes to climate change. Recycling waste is much cheaper than regular waste collection and disposal. The more we recycle, the more money we can save. Deposit returns can also help add financial incentives to recycle. Recycling can help protect the environment while conserving natural resources. It is critical to recycle and minimize the amount of waste we are putting into the atmosphere.Doing so can help save energy,reduce landfill waste, and protect our environment.\nRecycling brings communities together and helps people raise money for schools, colleges,hospitals, and more. These recycling drives make towns and cities happier and cleaner.\nWhen communities come together to raise awareness about recycling, it teaches people about the importance of protecting the environment and how to do so. Educating people about protecting the environment can help equip future generations with the knowledge and understanding they need to reduce pollution.\nRecycling creates new jobs every year. Jobs in recycling include sorters, drivers, mechanics,technicians, and more. When we recycle, we reprocess materials to make new products, reducing the amount of waste sent for incineration.\nIn simple words, recycling is essential to our natural environment, human. And all aspect of life.\nAdapted from:https://northhillbottledepot.ca/why-is-recycling-important-10-benefits-of-recycling/\n 12. What is the main idea of paragraph three?\n    ",
+            "questionItem": {
+                "question": {
+                    "questionId": "677fcd91",
+                    "grading": {
+                        "pointValue": 5,
+                        "correctAnswers": {
+                            "answers": [
+                                {
+                                    "value": "c. Why recycling can save energy."
+                                }
+                            ]
+                        }
+                    },
+                    "choiceQuestion": {
+                        "type": "RADIO",
+                        "options": [
+                            {
+                                "value": "a. What recycling means."
+                            },
+                            {
+                                "value": "b. Why recycling can reclycle the natural resources."
+                            },
+                            {
+                                "value": "c. Why recycling can save energy."
+                            },
+                            {
+                                "value": "d. How can recycling conserve our natural resources."
+                            },
+                            {
+                                "value": "e. How can recycling educate people about the Importance of Protecting the Environment"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "itemId": "0c091968",
+            "title": "13. Why does recycling reduce carbon emissions?",
+            "questionItem": {
+                "question": {
+                    "questionId": "2e1ff7e6",
+                    "grading": {
+                        "pointValue": 5,
+                        "correctAnswers": {
+                            "answers": [
+                                {
+                                    "value": "a. Because recylingtakes up less energy, it reduces the carbon footprint and emissions."
+                                },
+                                {
+                                    "value": "c. Because recycling waste is much cheaper than regular waste collection."
+                                }
+                            ]
+                        }
+                    },
+                    "choiceQuestion": {
+                        "type": "RADIO",
+                        "options": [
+                            {
+                                "value": "a. Because recylingtakes up less energy, it reduces the carbon footprint and emissions."
+                            },
+                            {
+                                "value": "b. Because when we recycle, it reduces our need to harvest raw materials."
+                            },
+                            {
+                                "value": "c. Because recycling waste is much cheaper than regular waste collection."
+                            },
+                            {
+                                "value": "d. Because recycling can help protect the environment while conserving natural resources."
+                            },
+                            {
+                                "value": "e. Because our world's natural resources are in short supply, we must help conserve these natural resources"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "itemId": "753f60f8",
+            "title": "14. Our increasing demand for these raw materials also displaces people who live near forests or around river systems. (Paragraph 5)\nThe underlined word has the similiar meaning, except...",
+            "questionItem": {
+                "question": {
+                    "questionId": "155bc568",
+                    "grading": {
+                        "pointValue": 5,
+                        "correctAnswers": {
+                            "answers": [
+                                {
+                                    "value": "d. request"
+                                },
+                                {
+                                    "value": "e. pressure"
+                                }
+                            ]
+                        }
+                    },
+                    "choiceQuestion": {
+                        "type": "RADIO",
+                        "options": [
+                            {
+                                "value": "a. insistence"
+                            },
+                            {
+                                "value": "b. importunity"
+                            },
+                            {
+                                "value": "c. exact"
+                            },
+                            {
+                                "value": "d. request"
+                            },
+                            {
+                                "value": "e. pressure"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "itemId": "71b1acd2",
+            "title": "15. Why can recycling materials save energy?",
+            "questionItem": {
+                "question": {
+                    "questionId": "755dbfd0",
+                    "grading": {
+                        "pointValue": 5,
+                        "correctAnswers": {
+                            "answers": [
+                                {
+                                    "value": "b. Because the new product is cheaper."
+                                },
+                                {
+                                    "value": "d. Because recycling material is the most popular activity for the mnajority of people in the world."
+                                }
+                            ]
+                        }
+                    },
+                    "choiceQuestion": {
+                        "type": "RADIO",
+                        "options": [
+                            {
+                                "value": "a. Because it is more expensive than making them from the new."
+                            },
+                            {
+                                "value": "b. Because the new product is cheaper."
+                            },
+                            {
+                                "value": "c. Because making recycling materials need long time to make it."
+                            },
+                            {
+                                "value": "d. Because recycling material is the most popular activity for the mnajority of people in the world."
+                            },
+                            {
+                                "value": "e. Because making recycling materials requires less energy than making them from the new."
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "itemId": "1c1748ff",
+            "pageBreakItem": {},
+            "title": "C. Numerasi"
+        },
+        {
+            "itemId": "1697bde5",
+            "imageItem": {
+                "image": {
+                    "contentUri": "https://lh7-rt.googleusercontent.com/formsz/AN7BsVAQqXePf6Pe_tNrL9nITVQaXq_BMX9i99mtQcgcXcz6d9BNswbFKd3S2i6SFCffv5nB7NK0NlSt82-hlWCl0kgI1ZEKT-6WL8cEHyXfG_yqo_BvtBY7xwdiInVrpVVGn5PWbkAYeO1aePIe90Nct7CmxA?key=O5-f8X-Ffw_fmfenM80EUQ",
+                    "properties": {
+                        "alignment": "LEFT",
+                        "width": 368
+                    }
+                }
+            },
+            "title": "The following text is for questions 16 to 20!\nAre Americans Trying to Eat Healthy?\nAttitudes of U.S. adults towards eating healthy food\nAmericans actively trying                       Perceived barriers to eating heaIthy,\nto eat healthy,by generation                 by share of respondents agreeing\n Surveys of 1,000-10,000 adults (18+) conducted in 2022\n* Gen Z:born 1995-2012, Millennials:1980-1994,\nGen X:1965-1979,Baby Boomers:1946-1964\nSources:Statista Consumer Insights,Cleveland Clinic\nSource:www.statista.com\n "
+        },
+        {
+            "itemId": "444dbe82",
+            "title": "16. Based on the text above, which one is the correct statement?",
+            "questionItem": {
+                "question": {
+                    "questionId": "1f3a0401",
+                    "grading": {
+                        "pointValue": 5,
+                        "correctAnswers": {
+                            "answers": [
+                                {
+                                    "value": "a. The chart contain about how to be healthy."
+                                }
+                            ]
+                        }
+                    },
+                    "choiceQuestion": {
+                        "type": "RADIO",
+                        "options": [
+                            {
+                                "value": "a. The chart contain about how to be healthy."
+                            },
+                            {
+                                "value": "b. The condition of American healthy life."
+                            },
+                            {
+                                "value": "c. The attitudes of American adulttoward eating healthy food."
+                            },
+                            {
+                                "value": "d. The tips of how American adult eating healthy food."
+                            },
+                            {
+                                "value": "e. Some condition of people in creating healthy life."
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "itemId": "598ae058",
+            "title": "17. How many obstacles exist to eating healthy food for an American adult?",
+            "questionItem": {
+                "question": {
+                    "questionId": "75dc910d",
+                    "grading": {
+                        "pointValue": 5,
+                        "correctAnswers": {
+                            "answers": [
+                                {
+                                    "value": "c. 3"
+                                },
+                                {
+                                    "value": "e. 5"
+                                }
+                            ]
+                        }
+                    },
+                    "choiceQuestion": {
+                        "type": "RADIO",
+                        "options": [
+                            {
+                                "value": "a. 1"
+                            },
+                            {
+                                "value": "b. 2"
+                            },
+                            {
+                                "value": "c. 3"
+                            },
+                            {
+                                "value": "d. 4"
+                            },
+                            {
+                                "value": "e. 5"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "itemId": "26b3e068",
+            "title": "18. Based on the text above, there survey is conducted in....",
+            "questionItem": {
+                "question": {
+                    "questionId": "4f7fcfef",
+                    "grading": {
+                        "pointValue": 5,
+                        "correctAnswers": {
+                            "answers": [
+                                {
+                                    "value": "d. 1995"
+                                },
+                                {
+                                    "value": "e. 2012"
+                                }
+                            ]
+                        }
+                    },
+                    "choiceQuestion": {
+                        "type": "RADIO",
+                        "options": [
+                            {
+                                "value": "a. 1990-1994"
+                            },
+                            {
+                                "value": "b. 1946-1964"
+                            },
+                            {
+                                "value": "c. 2002"
+                            },
+                            {
+                                "value": "d. 1995"
+                            },
+                            {
+                                "value": "e. 2012"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "itemId": "0ad6f713",
+            "title": "19. What is the percantage of Gen X actively traying to eat helathy?",
+            "questionItem": {
+                "question": {
+                    "questionId": "63b35699",
+                    "grading": {
+                        "pointValue": 5,
+                        "correctAnswers": {
+                            "answers": [
+                                {
+                                    "value": "d. 58%"
+                                }
+                            ]
+                        }
+                    },
+                    "choiceQuestion": {
+                        "type": "RADIO",
+                        "options": [
+                            {
+                                "value": "a. 44%"
+                            },
+                            {
+                                "value": "b. 51%"
+                            },
+                            {
+                                "value": "c. 23%"
+                            },
+                            {
+                                "value": "d. 58%"
+                            },
+                            {
+                                "value": "e. 46%"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "itemId": "15dd095f",
+            "title": "20. How many years are in Gen Z?",
+            "questionItem": {
+                "question": {
+                    "questionId": "3244576f",
+                    "grading": {
+                        "pointValue": 5,
+                        "correctAnswers": {
+                            "answers": [
+                                {
+                                    "value": "a. 12 years"
+                                },
+                                {
+                                    "value": "b. 18 years"
+                                },
+                                {
+                                    "value": "e. 17 years"
+                                }
+                            ]
+                        }
+                    },
+                    "choiceQuestion": {
+                        "type": "RADIO",
+                        "options": [
+                            {
+                                "value": "a. 12 years"
+                            },
+                            {
+                                "value": "b. 18 years"
+                            },
+                            {
+                                "value": "c. 14 years"
+                            },
+                            {
+                                "value": "d. 5years"
+                            },
+                            {
+                                "value": "e. 17 years"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "itemId": "17a035b9",
+            "pageBreakItem": {},
+            "title": "D. Uraian",
+            "description": "Find some references about \"The importance of Indonesians eating healthy food\".\nMake it in analytical exposition text.\nApply the \"Pelajar Pancasila\u201d Profile, which contains the dimensions of independence,critical thinking, and creativity in doing this work.\n Psychomotor Test\nDo the following task correctly.\nGoal\nMaking analytical exposition text and presenting the text.\nTools and Materials\nPaper,pencil,laptop,video recorder,etc.\nStep\n1. Choose one topic about healthy life.\n2. Write your text,understand the text.\n3. Present your topic, act as an news anchor. Record your showing. Don't forget to introduce yourself to begin your topic.\n4. Complete your work to your teacher.\n5. Complete the following reflection table after finishing your work.                         \nGive tick (\u2713)in the attitude scale column below\n1. VA:Very agree\n2. A: Agree\n3. DS: Disagree\n4. VDS: Very Disagree\nStatement"
+        },
+        {
+            "itemId": "47a98e08",
+            "title": "I was involved in this project.                       ",
+            "questionItem": {
+                "question": {
+                    "questionId": "54fa032a",
+                    "grading": {
+                        "pointValue": 5
+                    },
+                    "scaleQuestion": {
+                        "low": 1,
+                        "high": 4,
+                        "lowLabel": "VA",
+                        "highLabel": "VDS"
+                    }
+                }
+            }
+        },
+        {
+            "itemId": "7d835798",
+            "title": "The project's situation makes me feel enthusiastic to learn and know more about it.                        ",
+            "questionItem": {
+                "question": {
+                    "questionId": "28294902",
+                    "grading": {
+                        "pointValue": 5
+                    },
+                    "scaleQuestion": {
+                        "low": 1,
+                        "high": 4,
+                        "lowLabel": "VA",
+                        "highLabel": "VDS"
+                    }
+                }
+            }
+        },
+        {
+            "itemId": "615c6eeb",
+            "title": "I feel comfortable and confident when revealing opinions during this project.\nThe study of this project giving benefit for me to be a better student.\nThis project makes me understand to know the recent issue around my place.\nDiscussion in my group goes very well and increase my knowledge.                        ",
+            "questionItem": {
+                "question": {
+                    "questionId": "41ad5ca0",
+                    "grading": {
+                        "pointValue": 1
+                    },
+                    "scaleQuestion": {
+                        "low": 1,
+                        "high": 4,
+                        "lowLabel": "VA",
+                        "highLabel": "VDS"
+                    }
+                }
+            }
+        },
+        {
+            "itemId": "3344c9b5",
+            "title": "The instructor in this project help me to learn.                                               ",
+            "questionItem": {
+                "question": {
+                    "questionId": "679f1821",
+                    "grading": {
+                        "pointValue": 8
+                    },
+                    "scaleQuestion": {
+                        "low": 1,
+                        "high": 4,
+                        "lowLabel": "VA",
+                        "highLabel": "VDS"
+                    }
+                }
+            }
+        },
+        {
+            "itemId": "39dc477e",
+            "title": "The method method which used in this project is fun and great.                            \nMy skill in this project is increasing.\nOther opinions for this project",
+            "questionItem": {
+                "question": {
+                    "questionId": "3a4683dc",
+                    "grading": {
+                        "pointValue": 1
+                    },
+                    "scaleQuestion": {
+                        "low": 1,
+                        "high": 4,
+                        "lowLabel": "VA",
+                        "highLabel": "VDS"
+                    }
+                }
+            }
+        }
+    ],
+    "publishSettings": {
+        "publishState": {
+            "isPublished": true,
+            "isAcceptingResponses": true
+        }
+    }
+}
