@@ -1,8 +1,8 @@
 from flask import Blueprint, request, jsonify, render_template
 import hashlib, uuid
 
-url = '/' + hashlib.sha512(uuid.uuid4().hex.encode()).hexdigest()
-proctor_bp = Blueprint("proctor", __name__, url_prefix=url)
+#url = '/' + hashlib.sha512(uuid.uuid4().hex.encode()).hexdigest()
+proctor_bp = Blueprint("proctor", __name__, url_prefix="/proctor")
 
 @proctor_bp.route("/", methods=["GET", "POST"]) # proctor login page
 def proctorLoginPage():

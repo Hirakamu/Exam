@@ -27,8 +27,8 @@ from flask_cors import CORS
 import logging, os, yaml, json
 from psycopg2 import pool
 
-url = '/' + hashlib.sha512(uuid.uuid4().hex.encode()).hexdigest()
-teacher_bp = Blueprint("teacher", __name__, url_prefix=url)
+#url = '/' + hashlib.sha512(uuid.uuid4().hex.encode()).hexdigest()
+teacher_bp = Blueprint("teacher", __name__, url_prefix="/teacher")
 
 @teacher_bp.route("/", methods=["GET", "POST"]) # teacher login page
 def teacherLogin():

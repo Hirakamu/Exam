@@ -92,9 +92,43 @@ def initStudents():
                         continue
     finally:
         putDB(conn)
-
     return {"inserted": inserted, "total": len(students_data)}
+def initTeachers():
+    teachers_file = os.path.join(ROOT, "data", "school.json")
+    data = _load_file(teachers_file, try_yaml_json=True)
 
+    if not isinstance(data, dict) or "guru" not in data or not isinstance(data["guru"], list):
+        raise ValueError("school.json must contain a 'guru' list of teacher records")
+
+    conn = getDB()
+    inserted = 0
+    try:
+        with conn:
+            with conn.cursor() as cur:
+                for teacher in data["guru"]:
+                    try:
+                        tid = teacher["id"]
+                        name = teacher.get("name", "")
+                        job = teacher.get("subject", {})
+                        job_json = json.dumps(job, ensure_ascii=False)
+                        cur.execute(
+                            "INSERT INTO teachers (id, name, job) VALUES (%s, %s, %s::json) "
+                            "ON CONFLICT (id) DO UPDATE SET name = EXCLUDED.name, job = EXCLUDED.job",
+                            (tid, name, job_json),
+                        )
+                        inserted += cur.rowcount
+                    except Exception:
+                        logger.exception("Failed to insert teacher record: %s", teacher)
+                        continue
+                try:
+                    cur.execute(
+                        "SELECT setval(pg_get_serial_sequence('teachers','id'), coalesce((SELECT MAX(id) FROM teachers), 1), true);"
+                    )
+                except Exception:
+                    logger.exception("Failed to sync teachers sequence")
+    finally:
+        putDB(conn)
+    return {"inserted": inserted, "total": len(data["guru"])}
 
 app.register_blueprint(student_bp)
 app.register_blueprint(teacher_bp)
@@ -144,13 +178,15 @@ if __name__ == "__main__":
     sub = parser.add_subparsers(dest="cmd", required=True)
 
     p_students = sub.add_parser("init-students", help="Initialize students from JSON files")
+    p_teachers = sub.add_parser("init-teachers", help="Initialize teachers from JSON files")
     p_run_server = sub.add_parser("run-server", help="Run the Flask development server for debugging")
 
     args = parser.parse_args()
 
     setup_actions = {
         "init-students": initStudents,
-        "run-server": run_server()
+        "run-server": run_server(),
+        "init-teachers": initTeachers,
     }
     if args.cmd == "run-server":
         exit()

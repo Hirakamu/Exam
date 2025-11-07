@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Ujian — SMAN 2 Cikarang Pusat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="robots" content="noindex">
+    <style>
+        /* small helper styles */
+        .option-btn {
+            transition: all .12s;
+        }
+
+        .option-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .disabled {
+            opacity: .6;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900 font-sans">
+    <div class="max-w-4xl mx-auto px-4 py-8">
+        <header class="text-center mb-6">
+            <h1 id="pageHeader" class="text-2xl font-bold">Ujian — SMAN 2 Cikarang Pusat</h1>
+            <p class="text-sm text-gray-600">Pastikan Anda berada di ruang yang benar. Prototype.</p>
+        </header>
+
+        <main class="space-y-6">
+            <!-- Full-width exam area: render all questions stacked vertically (hidden until user accepts) -->
+            <section id="examArea" class="bg-white border rounded-lg shadow-sm p-6">
+                <div class="mb-4">
+            <div id="examTitle" class="text-lg font-semibold">Contoh Ujian — Static Soal</div>
+            <div id="meta" class="text-sm text-gray-500">Kelas: <span id="examClass">XII (Contoh)</span> • Soal: <span
+                id="totalQuestions">5</span></div>
+                    <div class="mt-3 w-full h-3 bg-gray-100 rounded overflow-hidden"></div>
+                </div>
+
+                <div id="questionContainer" class="space-y-4">
+                    <!-- Static example questions (static approach) -->
+
+                    <div class="p-4 border rounded" data-qid="1">
+                        <div class="font-semibold mb-2">Soal 1. Berapa hasil 2 + 2?</div>
+                        <div class="space-y-2">
+                            <label class="w-full flex items-center p-2 border rounded cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="q1" value="0" class="mr-3"> A. 3
+                            </label>
+                            <label class="w-full flex items-center p-2 border rounded cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="q1" value="1" class="mr-3"> B. 4
+                            </label>
+                            <label class="w-full flex items-center p-2 border rounded cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="q1" value="2" class="mr-3"> C. 5
+                            </label>
+                            <label class="w-full flex items-center p-2 border rounded cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="q1" value="3" class="mr-3"> D. 22
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="p-4 border rounded" data-qid="2">
+                        <div class="font-semibold mb-2">Soal 2. Ibu kota Indonesia adalah?</div>
+                        <div class="space-y-2">
+                            <label class="w-full flex items-center p-2 border rounded cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="q2" value="0" class="mr-3"> A. Jakarta
+                            </label>
+                            <label class="w-full flex items-center p-2 border rounded cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="q2" value="1" class="mr-3"> B. Bandung
+                            </label>
+                            <label class="w-full flex items-center p-2 border rounded cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="q2" value="2" class="mr-3"> C. Surabaya
+                            </label>
+                            <label class="w-full flex items-center p-2 border rounded cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="q2" value="3" class="mr-3"> D. Medan
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="p-4 border rounded" data-qid="3">
+                        <div class="font-semibold mb-2">Soal 3. Manakah yang termasuk mamalia?</div>
+                        <div class="space-y-2">
+                            <label class="w-full flex items-center p-2 border rounded cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="q3" value="0" class="mr-3"> A. Hiu
+                            </label>
+                            <label class="w-full flex items-center p-2 border rounded cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="q3" value="1" class="mr-3"> B. Katak
+                            </label>
+                            <label class="w-full flex items-center p-2 border rounded cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="q3" value="2" class="mr-3"> C. Lumba-lumba
+                            </label>
+                            <label class="w-full flex items-center p-2 border rounded cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="q3" value="3" class="mr-3"> D. Ikan Tuna
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- True / False question (static) -->
+                    <div class="p-4 border rounded" data-qid="4">
+                        <div class="font-semibold mb-2">Soal 4. Bumi berbentuk bulat?</div>
+                        <div class="space-y-2">
+                            <label class="w-full flex items-center p-2 border rounded cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="q4" value="0" class="mr-3"> A. Benar
+                            </label>
+                            <label class="w-full flex items-center p-2 border rounded cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="q4" value="1" class="mr-3"> B. Salah
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Multiple answers question (static checkboxes) -->
+                    <div class="p-4 border rounded" data-qid="5">
+                        <div class="font-semibold mb-2">Soal 5. Pilih semua yang merupakan bilangan prima.</div>
+                        <div class="space-y-2">
+                            <label class="w-full flex items-center p-2 border rounded cursor-pointer hover:bg-gray-50">
+                                <input type="checkbox" name="q5[]" value="0" class="mr-3"> A. 2
+                            </label>
+                            <label class="w-full flex items-center p-2 border rounded cursor-pointer hover:bg-gray-50">
+                                <input type="checkbox" name="q5[]" value="1" class="mr-3"> B. 3
+                            </label>
+                            <label class="w-full flex items-center p-2 border rounded cursor-pointer hover:bg-gray-50">
+                                <input type="checkbox" name="q5[]" value="2" class="mr-3"> C. 4
+                            </label>
+                            <label class="w-full flex items-center p-2 border rounded cursor-pointer hover:bg-gray-50">
+                                <input type="checkbox" name="q5[]" value="3" class="mr-3"> D. 5
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="mt-6 text-right">
+                    <a id="finishBtn" href="examsession_answers.html" class="px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700 inline-block">Finish</a>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center mt-8 text-sm text-gray-500">
+            <div>Hak Cipta © 2025 SMAN 2 Cikarang Pusat</div>
+            <div>Karya Siswa Kelas 11</div>
+        </footer>
+    </div>
+
+    </div>
+
+</body>
+
+</html>

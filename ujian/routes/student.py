@@ -2,8 +2,8 @@ from flask import Blueprint, request, jsonify, render_template
 from db import db_cursor
 import hashlib, uuid, json
 
-url = '/' + hashlib.sha512(uuid.uuid4().hex.encode()).hexdigest()
-student_bp = Blueprint("student", __name__, url_prefix=url)
+#url = '/' + hashlib.sha512(uuid.uuid4().hex.encode()).hexdigest()
+student_bp = Blueprint("student", __name__, url_prefix="/student")
 
 
 @student_bp.route("/", methods=["GET", "POST"])  # directed to here
@@ -58,7 +58,7 @@ def examLoginPage():
 @student_bp.route("/exam", methods=["GET", "POST"])  # add : embeded json output
 def examDo():
     if request.method == "GET":
-        return render_template("exam.html")
+        return render_template("examsession.html")
     
     if request.method != "POST":
         req = request.get_json(force=True)
