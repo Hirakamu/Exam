@@ -13,5 +13,5 @@ __pycache__/
 # user specfic data
 ujian/data/exam/safeexam/*
 ujian/data/exam/teacher/*
-ujian/exporter/credentials.json
-ujian/exporter/token.pkl
+ujian/formexporter/credentials.json
+ujian/formexporter/token.pkl
