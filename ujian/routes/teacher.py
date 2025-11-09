@@ -28,9 +28,9 @@ import logging, os, yaml, json
 from psycopg2 import pool
 
 #url = '/' + hashlib.sha512(uuid.uuid4().hex.encode()).hexdigest()
-teacher_bp = Blueprint("teacher", __name__, url_prefix="/teacher")
+bp = Blueprint("teacher", __name__)
 
-@teacher_bp.route("/", methods=["GET", "POST"]) # teacher login page
+@bp.route("/", methods=["GET", "POST"]) # teacher login page
 def teacherLogin():
     if request.method == 'GET':
         teachers = []
@@ -78,7 +78,7 @@ def teacherLogin():
             return jsonify({"ok": False, "message": f"Kesalahan server: {e}"}), 500
     return jsonify({"ok": False, "message": "Method not allowed."}), 405
 
-@teacher_bp.route("/dashboard", methods=['GET','POST']) # teacher dashboard
+@bp.route("/dashboard", methods=['GET','POST']) # teacher dashboard
 def teacherDashboard():
     if request.method == 'GET':
         return render_template("teacherdashboard.html"), 200
@@ -305,7 +305,7 @@ def teacherDashboard():
     
     return jsonify({"ok": False, "message": "Method not allowed."}), 405
 
-@teacher_bp.route("/dashboard/<subject>/<grade>")
+@bp.route("/dashboard/<subject>/<grade>")
 def teacherSubjectGrade(subject, grade):
     """
     Get list of classes for a specific subject and grade
@@ -374,7 +374,7 @@ def teacherSubjectGrade(subject, grade):
 
     return jsonify(data), 200
 
-@teacher_bp.route("/dashboard/<subject>/<grade>/<classe>")
+@bp.route("/dashboard/<subject>/<grade>/<class>")
 def teacherSubjectGradeClass(subject, grade, classe):
     """
     Get list of students for a specific subject, grade, and class
@@ -422,7 +422,7 @@ def teacherSubjectGradeClass(subject, grade, classe):
 
     return jsonify(data), 200
 
-@teacher_bp.route("/tokens", methods=["POST"]) # need authentication
+@bp.route("/tokens", methods=["POST"]) # need authentication
 def teacherToken():
     """
     { "all":"True", "hash":"1a2b3c..." } -> { "ok":"True", "tokens":[...] }
@@ -437,7 +437,7 @@ def teacherToken():
         tokens = [{"token": row[0], "room": row[1], "expires_at": row[2].isoformat() if row[2] else None} for row in cur.fetchall()]
         return jsonify({"ok": True, "tokens": tokens}), 200
 
-@teacher_bp.route("/tokens/create", methods=["POST"]) # need authentication
+@bp.route("/tokens/create", methods=["POST"]) # need authentication
 def teacherTokenCreate():
     """
     { "room": "01", "expires_in_minutes": 5 }
@@ -457,7 +457,7 @@ def teacherTokenCreate():
         )
         return jsonify({"ok": True, "token": token, "expires_at": expires_at.isoformat()}), 200
 
-@teacher_bp.route("/tokens/cleanup", methods=["POST"]) # need authentication
+@bp.route("/tokens/cleanup", methods=["POST"]) # need authentication
 def teacherTokenCleanup():
     args = request.get_json(force=False)
     force = bool(args.get("force", False)) if args else False
@@ -469,7 +469,7 @@ def teacherTokenCleanup():
         deleted_count = cur.rowcount
         return jsonify({"force": force, "deleted": deleted_count}), 200
 
-@teacher_bp.route("/sessions/cleanup", methods=["POST"]) # need authentication
+@bp.route("/sessions/cleanup", methods=["POST"]) # need authentication
 def teacherSessionCleanup():
     args = request.get_json(force=False)
     force = bool(args.get("force", False)) if args else False
@@ -481,7 +481,7 @@ def teacherSessionCleanup():
         deleted_count = cur.rowcount
         return jsonify({"force": force, "deleted": deleted_count}), 200
 
-@teacher_bp.route("/requestteacherjob", methods=["POST"])
+@bp.route("/requestteacherjob", methods=["POST"])
 def requestTeacher():
     req = request.get_json(force=True)
     name = req.get("name")
@@ -494,6 +494,7 @@ def requestTeacher():
         data = cur.fetchone()
         if not data:
             return jsonify({"ok": False, "message": "Guru tidak terdaftar."}), 404
+    return jsonify({"ok": False, "message": "Method not allowed."}), 200
 
 
         

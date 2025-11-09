@@ -1,0 +1,149 @@
+<!-- templates/exam.html -->
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Exam — {{ user_id }}</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+  <style>
+    html,body {height:100%; margin:0; font-family:system-ui,Arial;}
+    #overlay {position:fixed; inset:0; background:rgba(0,0,0,0.85); color:#fff; display:flex; align-items:center; justify-content:center; flex-direction:column; z-index:9999;}
+    #examField {padding:20px;}
+    #banned {display:none;}
+    textarea{width:80%;height:120px;}
+    button{padding:8px 12px;margin:8px;}
+  </style>
+</head>
+<body>
+  <div id="landing">
+    <h2>Start exam</h2>
+    <button id="startBtn">Start (enter fullscreen)</button>
+  </div>
+
+  <div id="examField" style="display:none;">
+    <h2>Exam in progress</h2>
+    <p>QUESTION PANEL — Replace with your real UI</p>
+    <p id="status">Status: active</p>
+  </div>
+
+  <div id="overlay" style="display:none;">
+    <div id="banned">
+      <h2>ACCESS REVOKED</h2>
+      <p id="banReason">You have been banned for suspicious activity.</p>
+      <textarea id="appealText" placeholder="Write appeal..."></textarea>
+      <div>
+        <button id="sendAppeal">Send Appeal</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+const userId = "{{ user_id }}";
+const token = "{{ token }}"; // JWT from server
+const socket = io({ query: { token: token } });
+
+const startBtn = document.getElementById('startBtn');
+const landing = document.getElementById('landing');
+const examField = document.getElementById('examField');
+const overlay = document.getElementById('overlay');
+const bannedDiv = document.getElementById('banned');
+const banReasonEl = document.getElementById('banReason');
+
+let banned = false;
+
+// aggressive immediate ban locally and remote:
+// any detection triggers notifyServerAndLock which emits violation immediately and locks UI.
+
+function lockUI(reason){
+  banned = true;
+  // hide everything, show full-screen overlay
+  landing.style.display = 'none';
+  examField.style.display = 'none';
+  overlay.style.display = 'flex';
+  bannedDiv.style.display = 'block';
+  banReasonEl.textContent = reason || 'Banned';
+  // attempt to block reload/back navigation
+  window.onbeforeunload = function(){ return "You are banned. Reload not allowed."; };
+  // aggressively prevent reconnection attempts by closing socket after emit
+}
+
+function notifyServerAndLock(reason){
+  if(banned) return;
+  socket.emit('violation', { user_id: userId, reason: reason, token: token });
+  lockUI(reason);
+}
+
+// Strict detection
+document.addEventListener('visibilitychange', () => {
+  if(document.hidden) notifyServerAndLock('visibility:hidden');
+});
+window.addEventListener('blur', () => notifyServerAndLock('window:blur'));
+window.addEventListener('resize', () => {
+  if (window.innerHeight < screen.height - 50) notifyServerAndLock('resize:exit-fullscreen');
+});
+
+// block context, selection, paste, devtools heuristics, navigation keys
+document.addEventListener('contextmenu', e=>e.preventDefault());
+document.addEventListener('copy', e=>e.preventDefault());
+document.addEventListener('cut', e=>e.preventDefault());
+document.addEventListener('paste', e=>e.preventDefault());
+document.addEventListener('keydown', e=>{
+  // aggressive block for many combos
+  const forbidden = (
+    e.key === 'Escape' ||
+    (e.ctrlKey && (e.key==='Tab' || e.key==='r' || e.key==='w' || e.key==='p')) ||
+    (e.metaKey && (e.key==='r' || e.key==='w'))
+  );
+  if(forbidden){
+    e.preventDefault();
+    notifyServerAndLock('forbidden-key:' + e.key);
+  }
+});
+
+// basic devtools detection (heuristic)
+(function devtoolsCheck(){
+  const threshold = 160;
+  const widthDiff = window.outerWidth - window.innerWidth;
+  const heightDiff = window.outerHeight - window.innerHeight;
+  if(widthDiff > threshold || heightDiff > threshold){
+    notifyServerAndLock('devtools-detected');
+  }
+  // repeat check periodically for early detection
+  setTimeout(devtoolsCheck, 1000);
+})();
+
+// start flow
+startBtn.addEventListener('click', () => {
+  // must be user gesture to enter fullscreen
+  const el = document.documentElement;
+  if (el.requestFullscreen) el.requestFullscreen().catch(()=>{});
+  landing.style.display = 'none';
+  examField.style.display = 'block';
+});
+
+// socket handlers
+socket.on('connect', ()=>{ /* connected */ });
+socket.on('ban', data => {
+  // server authoritative ban; show overlay even if already locked
+  lockUI('Server ban: ' + (data.reason || 'violation'));
+});
+socket.on('unbanned', data => {
+  if(data.user_id === userId){
+    // allow reload once unbanned
+    alert('You were unbanned by admin. Page will reload.');
+    window.onbeforeunload = null;
+    location.reload();
+  }
+});
+
+// appeal send
+document.getElementById('sendAppeal').addEventListener('click', ()=>{
+  const text = document.getElementById('appealText').value;
+  socket.emit('appeal', { user_id: userId, text: text });
+  alert('Appeal sent. Admin will review.');
+});
+
+</script>
+</body>
+</html>

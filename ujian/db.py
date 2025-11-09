@@ -4,27 +4,15 @@ import yaml
 import logging
 from psycopg2 import pool
 from contextlib import contextmanager
+from config import DB
 
-ROOT = os.path.dirname(os.path.abspath(__file__))
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-try:  # load config
-    with open(os.path.join(ROOT, "data/config.yaml"), "r") as f:
-        config = yaml.safe_load(f)
-except Exception:
-    logger.fatal("config.yaml not found, app cannot start")
-    exit()
 
 
-DBCONFIG = {
-    "dbname": f"{config.get('database', {}).get('name', '')}",
-    "user": f"{config.get('database', {}).get('user', '')}",
-    "password": f"{config.get('database', {}).get('password', '')}",
-    "host": f"{config.get('database', {}).get('host', '')}"
-}
 try:  # create DB pool
-    dbPool = pool.ThreadedConnectionPool(1, 50, **DBCONFIG)
+    dbPool = pool.ThreadedConnectionPool(1, 50, **DB)
 except Exception:
     logger.exception("Failed to create DB connection pool")
     dbPool = None

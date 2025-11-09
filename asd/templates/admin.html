@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Admin</title>
+<script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+</head>
+<body>
+<h2>Admin console</h2>
+<div id="events"></div>
+<script>
+const socket = io({ query: { role: 'admin' } });
+socket.on('connect', ()=>fetch('/admin/bans').then(r=>r.json()).then(d=>console.log(d)));
+socket.on('ban_notice', data => {
+  const e = document.getElementById('events');
+  const el = document.createElement('div'); el.textContent = 'BAN ' + data.user_id + ' reason:' + data.reason;
+  const btn = document.createElement('button'); btn.textContent='Unban';
+  btn.onclick = ()=> fetch('/admin/unban',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({user_id:data.user_id})}).then(()=>location.reload());
+  el.appendChild(btn); e.appendChild(el);
+});
+socket.on('appeal_notice', data => {
+  const e = document.getElementById('events');
+  const el = document.createElement('div'); el.textContent = 'APPEAL ' + data.user_id + ' -> ' + data.text;
+  e.appendChild(el);
+});
+</script>
+</body>
+</html>

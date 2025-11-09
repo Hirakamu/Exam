@@ -13,19 +13,6 @@ CREATE TABLE teachers (
     job jsonb NOT NULL
 );
 
-CREATE TABLE rooms (
-  nis text NOT NULL REFERENCES students(nis) PRIMARY KEY,
-  room text NOT NULL
-);
-
-CREATE TABLE tokens (
-  token text PRIMARY KEY,
-  token_type text,
-  room text,
-  created_at timestamptz NOT NULL DEFAULT now(),
-  expires_at timestamptz NOT NULL
-);
-
 CREATE TABLE exam_forms (
   id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
   grade text NOT NULL,
@@ -36,29 +23,23 @@ CREATE TABLE exam_forms (
 CREATE TABLE sessions (
   id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
   nis text NOT NULL REFERENCES students(nis),
+  subject text NOT NULL,
   active boolean NOT NULL DEFAULT false,
   seed text NOT NULL,
-  session_hash text NOT NULL,
-  started_at timestamptz NOT NULL DEFAULT now(),
-  special_key text NOT NULL
+  session_hash text NOT NULL UNIQUE,
+  special_key text NOT NULL,
+  started_at timestamptz NOT NULL DEFAULT now()
 );
 
 CREATE TABLE answers (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id uuid PRIMARY KEY REFERENCES sessions(id) ON DELETE CASCADE,
   nis text NOT NULL REFERENCES students(nis),
+  session_hash text NOT NULL REFERENCES sessions(session_hash),
   subject text NOT NULL,
   answers jsonb NOT NULL,
   submitted_at timestamptz NOT NULL DEFAULT now()
 );
 
-CREATE TABLE teachersessions (
-  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
-  teacher_id int NOT NULL REFERENCES teachers(id),
-  active boolean NOT NULL DEFAULT false,
-  session_hash text NOT NULL,
-  seed text NOT NULL,
-  special_key text NOT NULL
-);
 
 -- prevent more than one active session per nis
 CREATE UNIQUE INDEX uniq_active_nis ON sessions(nis) WHERE active = true;
